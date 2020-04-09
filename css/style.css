@@ -3,12 +3,11 @@
 /* line 14, style.scss */
 body {
   font-family: "Montserrat", sans-serif;
-  font-size: 14px;
   color: #8c8c8c;
   width: 100%;
+  font-size: 14px;
 }
 
-/*Свойства width и height включают в себя значения полей и границ, но не отступов (margin).*/
 /* line 22, style.scss */
 *,
 *::before,
@@ -17,7 +16,6 @@ body {
           box-sizing: border-box;
 }
 
-/*Задаём общие параметры кнопкам*/
 /* line 29, style.scss */
 .btn {
   display: inline-block;
@@ -41,13 +39,11 @@ body {
   transition: color 0.1s linear;
 }
 
-/*Сбрасываем подчёркивание ссылок*/
 /* line 49, style.scss */
 a {
   text-decoration: none;
 }
 
-/*Задаём общие параметры первого экрана*/
 /* line 54, style.scss */
 header {
   width: 100%;
@@ -72,7 +68,6 @@ header .container {
   height: inherit;
 }
 
-/*Создаём выравнивающий контейнер*/
 /* line 70, style.scss */
 .container {
   width: 100%;
@@ -80,28 +75,147 @@ header .container {
   margin: 0 auto;
 }
 
-/*Создаём шапку*/
 /* line 77, style.scss */
-.logo {
-  width: 181px;
-  height: 56px;
+header {
+  position: relative;
+  /*Создаём коммерческое предложение на главном экране
+  .offer {
+    color: $white-clr;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    h1 {
+  	  font-family: $main-font;
+  	  font-size: 52px;
+  	  font-weight: 700;
+  	  margin: 5px 0 15px 0;
+  	  padding: 0;
+  	}
+    h2 {
+  	  font-family: $main-font;
+  	  font-size: 36px;
+  	  font-weight: 500;
+  	  margin: 0;
+  	  padding: 0;
+  	}
+    p {
+  	  font-family: $second-font;
+  	  font-size: 16px;
+  	  font-weight: 300;
+  	  line-height: 1.5;
+  	  margin: 0;
+  	  padding: 0;
+  	}
+    .btn {
+  	  margin-top: 50px;
+  	}
+  }
+  */
+  /*Пагинация
+  .pagination {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .pagination-list {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    li {
+  	  display: block;
+  	  list-style: none;
+  	  margin: 0 5px;
+  	  padding: 2px;
+  	  width: 15px;
+  	  height: 15px;
+  	  -moz-border-radius: 100%;
+  	  -webkit-border-radius: 100%;
+  	  border-radius: 100%;
+  	  background-color: rgba(255,255,255,0);
+  	  position: relative;
+  	  cursor: pointer;
+  	  &::before {
+  		  content: "";
+  		  display: block;
+  		  width: 10px;
+  		  height: 10px;
+  		  -moz-border-radius: 100%;
+  		  -webkit-border-radius: 100%;
+  		  border-radius: 100%;
+  		  background-color: rgba(255,255,255,.5);
+  		  border: solid 2px rgba(255,255,255,0);
+  		  position: absolute;
+  		  top: 1px;
+  		  left: .5px;
+  		  opacity: 1;
+  		}
+  	  &::after {
+  		  content: "";
+  		  display: block;
+  		  width: 15px;
+  		  height: 15px;
+  		  -moz-border-radius: 100%;
+  		  -webkit-border-radius: 100%;
+  		  border-radius: 100%;
+  		  background-color: rgba(255,255,255,0);
+  		  border: solid 2px rgba(255,255,255,1);
+  		  position: absolute;
+  		  top: -2px;
+  		  left: -2px;
+  		  opacity: 0;
+  		}
+  	  &:hover::before  {
+  		  opacity: 0;
+  		  transition: opacity 0.1s linear;
+  		}
+  	  &:hover::after  {
+  		  opacity: 1;
+  		  transition: opacity 0.1s linear;
+  		}
+  	}
+  }*/
 }
-
-/* line 81, style.scss */
-.heading {
+/* line 79, style.scss */
+header .heading {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
   padding-top: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 5;
 }
-/* line 86, style.scss */
-.heading ul {
+/* line 90, style.scss */
+header .heading.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #362f2d;
+  -webkit-transition: background-color 0.1s linear;
+  transition: background-color 0.1s linear;
+  z-index: 5;
+  opacity: 0.9;
+  padding: 10px 15%;
+}
+/* line 101, style.scss */
+header .heading .logo {
+  width: 181px;
+  height: 56px;
+  z-index: 5;
+  margin-right: 10%;
+}
+/* line 108, style.scss */
+header .heading nav ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -110,78 +224,303 @@ header .container {
           justify-content: space-between;
   list-style: none;
 }
-/* line 91, style.scss */
-.heading li {
+/* line 112, style.scss */
+header .heading nav ul li {
   margin-left: 30px;
 }
-/* line 93, style.scss */
-.heading li:nth-last-child(2) {
+/* line 114, style.scss */
+header .heading nav ul li:nth-last-child(2) {
   margin-left: 60px;
 }
-/* line 97, style.scss */
-.heading a {
+/* line 117, style.scss */
+header .heading nav ul li a {
   color: #ffffff;
   text-decoration: none;
 }
-/* line 100, style.scss */
-.heading a:hover {
+/* line 120, style.scss */
+header .heading nav ul li a:hover {
   color: #c7b299;
   -webkit-transition: color 0.1s linear;
   transition: color 0.1s linear;
 }
-/* line 105, style.scss */
-.heading .icon-cart {
+/* line 129, style.scss */
+header .heading nav.active ul {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 100px 30px 30px;
+  background-color: #362f2d;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+/* line 139, style.scss */
+header .heading nav.active ul li {
+  font-size: 18px;
+  margin: 0;
+  padding: 10px;
+}
+/* line 143, style.scss */
+header .heading nav.active ul li:nth-last-child(2) {
+  margin-left: 0;
+}
+/* line 150, style.scss */
+header .heading .icon-cart {
   display: block;
   width: 18px;
   height: 24px;
   background: url("../img/icon-cart.png");
 }
-/* line 110, style.scss */
-.heading .icon-cart:hover {
+/* line 155, style.scss */
+header .heading .icon-cart:hover {
   background: url("../img/icon-cart-hover.png");
   -webkit-transition: background 0.1s linear;
   transition: background 0.1s linear;
 }
-/* line 115, style.scss */
-.heading .icon-search {
+/* line 160, style.scss */
+header .heading .icon-search {
   display: block;
   width: 24px;
   height: 24px;
   background: url("../img/icon-search.png");
 }
-/* line 120, style.scss */
-.heading .icon-search:hover {
+/* line 165, style.scss */
+header .heading .icon-search:hover {
   background: url("../img/icon-search-hover.png");
   -webkit-transition: background 0.1s linear;
   transition: background 0.1s linear;
 }
-
-/*Создаём коммерческое предложение на главном экране*/
-/* line 128, style.scss */
-.offer {
-  color: #ffffff;
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
+/* line 171, style.scss */
+header .heading .burger-menu {
+  display: none;
+  width: 30px;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  z-index: 5;
+  padding: 10px 0;
+  font-size: 0;
+  color: transparent;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
-/* line 133, style.scss */
-.offer h1 {
+/* line 184, style.scss */
+header .heading .burger-menu:focus {
+  outline: 0;
+}
+/* line 187, style.scss */
+header .heading .burger-menu .burger {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  -webkit-transition: background 0.1s linear;
+  transition: background 0.1s linear;
+}
+/* line 199, style.scss */
+header .heading .burger-menu .burger::before, header .heading .burger-menu .burger::after {
+  content: "";
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff;
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  -webkit-transition: -webkit-transform 0.1s linear;
+  transition: -webkit-transform 0.1s linear;
+  transition: transform 0.1s linear;
+  transition: transform 0.1s linear, -webkit-transform 0.1s linear;
+}
+/* line 210, style.scss */
+header .heading .burger-menu .burger::before {
+  top: -8px;
+}
+/* line 213, style.scss */
+header .heading .burger-menu .burger::after {
+  bottom: -8px;
+}
+/* line 217, style.scss */
+header .heading .burger-menu.active {
+  border: 0;
+}
+/* line 219, style.scss */
+header .heading .burger-menu.active .burger {
+  background: none;
+}
+/* line 221, style.scss */
+header .heading .burger-menu.active .burger::before {
+  -webkit-transform-origin: left top;
+          transform-origin: left top;
+  -webkit-transform: rotate(45deg) translateX(-3px);
+          transform: rotate(45deg) translateX(-3px);
+  -webkit-transition: -webkit-transform 0.1s linear;
+  transition: -webkit-transform 0.1s linear;
+  transition: transform 0.1s linear;
+  transition: transform 0.1s linear, -webkit-transform 0.1s linear;
+}
+/* line 226, style.scss */
+header .heading .burger-menu.active .burger::after {
+  -webkit-transform-origin: left bottom;
+          transform-origin: left bottom;
+  -webkit-transform: rotate(-45deg) translateX(-3px);
+          transform: rotate(-45deg) translateX(-3px);
+  -webkit-transition: -webkit-transform 0.1s linear;
+  transition: -webkit-transform 0.1s linear;
+  transition: transform 0.1s linear;
+  transition: transform 0.1s linear, -webkit-transform 0.1s linear;
+}
+/* line 239, style.scss */
+header .slick-slider {
+  min-width: 0;
+}
+/* line 248, style.scss */
+header .slick-list {
+  overflow: hidden;
+}
+/* line 252, style.scss */
+header .slick-track {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/* line 287, style.scss */
+header .slider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url("../img/photo.jpg") no-repeat center top;
+  background-size: cover;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/* line 295, style.scss */
+header .slider .slick-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  font-size: 0;
+  width: 50px;
+  height: 50px;
+  background: none;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  opacity: 0.5;
+  display: inline-block;
+  cursor: pointer;
+}
+/* line 308, style.scss */
+header .slider .slick-arrow.slick-prev {
+  left: 40px;
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+/* line 312, style.scss */
+header .slider .slick-arrow.slick-next {
+  right: 40px;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+/* line 316, style.scss */
+header .slider .slick-arrow:focus {
+  outline: 0;
+}
+/* line 321, style.scss */
+header .slider .slick-dots {
+  width: 100%;
+  position: absolute;
+  bottom: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+/* line 328, style.scss */
+header .slider .slick-dots li {
+  list-style: none;
+  margin: 0 5px;
+}
+/* line 331, style.scss */
+header .slider .slick-dots li button {
+  font-size: 0;
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  border: transparent;
+  border-radius: 50%;
+}
+/* line 339, style.scss */
+header .slider .slick-dots li button:focus {
+  outline: 0;
+}
+/* line 344, style.scss */
+header .slider .slick-dots li.slick-active button {
+  width: 15px;
+  height: 15px;
+  background-color: transparent;
+  border: solid 2px rgba(255, 255, 255, 0.5);
+}
+/* line 356, style.scss */
+header .slider-item .slider-item-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  min-width: 0;
+  margin: 0 auto;
+  padding: 300px 90px 0;
+  background: url("../img/photo.jpg") no-repeat center top;
+}
+/* line 369, style.scss */
+header .slider-item .slider-item-inner h1 {
   font-family: "Raleway", sans-serif;
   font-size: 52px;
   font-weight: 700;
   margin: 5px 0 15px 0;
   padding: 0;
 }
-/* line 140, style.scss */
-.offer h2 {
+/* line 376, style.scss */
+header .slider-item .slider-item-inner h2 {
   font-family: "Raleway", sans-serif;
   font-size: 36px;
   font-weight: 500;
   margin: 0;
   padding: 0;
 }
-/* line 147, style.scss */
-.offer p {
+/* line 383, style.scss */
+header .slider-item .slider-item-inner p {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   font-weight: 300;
@@ -189,111 +528,50 @@ header .container {
   margin: 0;
   padding: 0;
 }
-/* line 155, style.scss */
-.offer .btn {
+/* line 391, style.scss */
+header .slider-item .slider-item-inner .btn {
   margin-top: 50px;
 }
 
-/*Создаём блок с пагинацией*/
-/* line 161, style.scss */
-.pagination {
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-/* line 165, style.scss */
-.pagination-list {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0;
-  padding: 0;
-}
-/* line 171, style.scss */
-.pagination-list li {
-  display: block;
-  list-style: none;
-  margin: 0 5px;
-  padding: 2px;
-  width: 15px;
-  height: 15px;
-  border-radius: 100%;
-  background-color: rgba(255, 255, 255, 0);
-  position: relative;
-}
-/* line 183, style.scss */
-.pagination-list li::before {
-  content: "";
-  display: block;
-  width: 10px;
-  height: 10px;
-  border-radius: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
-  border: solid 2px rgba(255, 255, 255, 0);
-  position: absolute;
-  top: 1px;
-  left: .5px;
-  opacity: 1;
-}
-/* line 198, style.scss */
-.pagination-list li::after {
-  content: "";
-  display: block;
-  width: 15px;
-  height: 15px;
-  border-radius: 100%;
-  background-color: rgba(255, 255, 255, 0);
-  border: solid 2px white;
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  opacity: 0;
-}
-/* line 213, style.scss */
-.pagination-list li:hover::before {
-  opacity: 0;
-  -webkit-transition: opacity 0.1s linear;
-  transition: opacity 0.1s linear;
-}
-/* line 217, style.scss */
-.pagination-list li:hover::after {
-  opacity: 1;
-  -webkit-transition: opacity 0.1s linear;
-  transition: opacity 0.1s linear;
-}
-
-/*Создаём блок с преимуществами*/
-/* line 225, style.scss */
+/* line 499, style.scss */
 .advantages {
   width: 100%;
-  height: 373px;
+  height: auto;
   background-color: #ffffff;
+  padding: 10px 20px 80px;
 }
-/* line 229, style.scss */
-.advantages ul {
+/* line 504, style.scss */
+.advantages .container {
+  width: 100%;
+  height: auto;
+}
+/* line 507, style.scss */
+.advantages .container ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
   list-style: none;
-  padding: 80px 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
-/* line 236, style.scss */
-.advantages li {
+/* line 516, style.scss */
+.advantages .container ul li {
+  display: block;
   text-align: center;
+  padding: 0 10px 30px;
+  min-width: 250px;
+  height: auto;
 }
-/* line 238, style.scss */
-.advantages li h3 {
+/* line 522, style.scss */
+.advantages .container ul li h3 {
   font-family: "Raleway", sans-serif;
   font-size: 22px;
   font-weight: 600;
@@ -301,8 +579,8 @@ header .container {
   padding-top: 23px;
   padding-bottom: 15px;
 }
-/* line 246, style.scss */
-.advantages li p {
+/* line 530, style.scss */
+.advantages .container ul li p {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -310,133 +588,146 @@ header .container {
   color: #8c8c8c;
   position: relative;
 }
-/* line 253, style.scss */
-.advantages li p::after {
+/* line 537, style.scss */
+.advantages .container ul li p::after {
   content: "";
   display: block;
   width: 70px;
   height: 3px;
   background-color: #f1eee9;
-  position: absolute;
-  top: 135%;
-  left: 40%;
+  position: relative;
+  top: 25px;
+  margin: 0 auto;
   z-index: 1;
 }
-/* line 265, style.scss */
-.advantages li:hover h3 {
+/* line 549, style.scss */
+.advantages .container ul li:hover h3 {
   color: #c7b299;
   -webkit-transition: color 0.1s linear;
   transition: color 0.1s linear;
 }
-/* line 269, style.scss */
-.advantages li:hover p::after {
+/* line 553, style.scss */
+.advantages .container ul li:hover p::after {
   background-color: #c7b299;
   -webkit-transition: background-color 0.1s linear;
   transition: background-color 0.1s linear;
 }
-/* line 273, style.scss */
-.advantages li .icon-webapp {
+/* line 557, style.scss */
+.advantages .container ul li .icon-webapp {
   width: 49px;
   height: 49px;
   margin: 0 auto;
   background: url("../img/icon-webapp.png");
 }
-/* line 279, style.scss */
-.advantages li:hover .icon-webapp {
+/* line 563, style.scss */
+.advantages .container ul li:hover .icon-webapp {
   background: url("../img/icon-webapp-hover.png");
   -webkit-transition: background 0.1s linear;
   transition: background 0.1s linear;
 }
-/* line 283, style.scss */
-.advantages li .icon-dev {
+/* line 567, style.scss */
+.advantages .container ul li .icon-dev {
   width: 44px;
   height: 40px;
-  margin: 0 auto;
+  margin: 10px auto 0;
   background: url("../img/icon-dev.png");
 }
-/* line 289, style.scss */
-.advantages li:hover .icon-dev {
+/* line 573, style.scss */
+.advantages .container ul li:hover .icon-dev {
   background: url("../img/icon-dev-hover.png");
   -webkit-transition: background 0.1s linear;
   transition: background 0.1s linear;
 }
-/* line 293, style.scss */
-.advantages li .icon-cust {
+/* line 577, style.scss */
+.advantages .container ul li .icon-cust {
   width: 44px;
   height: 44px;
   margin: 0 auto;
   background: url("../img/icon-cust.png");
 }
-/* line 299, style.scss */
-.advantages li:hover .icon-cust {
+/* line 583, style.scss */
+.advantages .container ul li:hover .icon-cust {
   background: url("../img/icon-cust-hover.png");
   -webkit-transition: background 0.1s linear;
   transition: background 0.1s linear;
 }
-/* line 303, style.scss */
-.advantages li .icon-mark {
+/* line 587, style.scss */
+.advantages .container ul li .icon-mark {
   width: 52px;
   height: 36px;
-  margin: 0 auto;
+  margin: 10px auto 0;
   background: url("../img/icon-mark.png");
 }
-/* line 309, style.scss */
-.advantages li:hover .icon-mark {
+/* line 593, style.scss */
+.advantages .container ul li:hover .icon-mark {
   background: url("../img/icon-mark-hover.png");
   -webkit-transition: background 0.1s linear;
   transition: background 0.1s linear;
 }
-/* line 313, style.scss */
-.advantages li:hover p::after {
+/* line 597, style.scss */
+.advantages .container ul li:hover p::after {
   background-color: #c7b299;
   -webkit-transition: background-color 0.1s linear;
   transition: background-color 0.1s linear;
 }
 
-/*Создаём блок Реализация*/
-/* line 321, style.scss */
+/* line 607, style.scss */
 .realization {
   text-align: center;
   width: 100%;
-  height: 700px;
+  height: auto;
   background-color: #fbfaf8;
   padding: 0;
   margin: 0;
   padding-top: 75px;
 }
-/* line 329, style.scss */
-.realization h2 {
+/* line 615, style.scss */
+.realization .container {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+/* line 619, style.scss */
+.realization .container h2 {
   font-family: "Raleway", sans-serif;
   font-size: 30px;
   color: #555555;
 }
-/* line 334, style.scss */
-.realization p {
+/* line 624, style.scss */
+.realization .container p {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   line-height: 1.7;
   color: #8c8c8c;
-  width: 770px;
   margin: 0 auto;
   padding: 15px 0 35px;
+  width: 70%;
 }
-/* line 343, style.scss */
-.realization img {
-  margin: 0;
+/* line 633, style.scss */
+.realization .container img {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
   position: relative;
-  top: 4px;
+  bottom: -5;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  padding: 0;
+  border: 0;
 }
 
-/*Создаём блок Вордпресс*/
-/* line 351, style.scss */
+/* line 648, style.scss */
 .wordpress {
   margin: 0;
   width: 100%;
-  height: 150px;
+  height: auto;
   background: -webkit-gradient(linear, left top, right top, from(#211b19), to(#4e3427));
   background: linear-gradient(left, #211b19, #4e3427);
+  padding: 40px 0;
+  z-index: 2;
 }
-/* line 356, style.scss */
+/* line 655, style.scss */
 .wordpress .container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -444,25 +735,30 @@ header .container {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 150px;
+  width: 100%;
+  height: auto;
   padding: 0 30px;
 }
-/* line 362, style.scss */
-.wordpress .container h2 {
+/* line 664, style.scss */
+.wordpress .container .wordpress-text h2 {
   font-family: "Raleway", sans-serif;
   font-size: 28px;
   font-weight: 400;
   color: #ffffff;
 }
-/* line 367, style.scss */
-.wordpress .container h2 .colortext {
+/* line 669, style.scss */
+.wordpress .container .wordpress-text h2 .colortext {
   color: #c7b299;
 }
-/* line 371, style.scss */
-.wordpress .container .wordpress p {
+/* line 673, style.scss */
+.wordpress .container .wordpress-text p {
   font-family: "Montserrat", sans-serif;
   font-size: 18px;
   font-weight: 500;
@@ -470,15 +766,15 @@ header .container {
   padding-top: 5px;
 }
 
-/*создаём блок Projects*/
-/* line 382, style.scss */
+/* line 685, style.scss */
 .projects {
   width: 100%;
-  height: 1162px;
+  height: auto;
 }
-/* line 385, style.scss */
+/* line 688, style.scss */
 .projects .container {
-  height: 100%;
+  width: 100%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -492,24 +788,29 @@ header .container {
   text-align: center;
   padding: 80px 30px;
 }
-/* line 392, style.scss */
+/* line 696, style.scss */
 .projects .container > h2 {
   font-family: "Raleway", sans-serif;
   font-size: 30px;
   color: #555555;
 }
-/* line 397, style.scss */
+/* line 701, style.scss */
 .projects .container > p {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   line-height: 1.7;
   color: #8c8c8c;
-  width: 770px;
   margin: 0 auto;
-  padding: 15px 0 35px;
+  padding-top: 15px;
+  width: 70%;
 }
-/* line 406, style.scss */
-.projects .container .projects-button {
+/* line 710, style.scss */
+.projects .container .projects-buttons {
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+/* line 713, style.scss */
+.projects .container .projects-buttons .projects-button {
   display: inline-block;
   line-height: 32px;
   text-align: center;
@@ -523,59 +824,55 @@ header .container {
   border-radius: 3px;
   border: solid 1px #ebebeb;
   padding: 0 20px;
-  margin: 0 6px 40px 0;
+  margin: 0 6px 6px 0;
 }
-/* line 421, style.scss */
-.projects .container .projects-button:hover {
+/* line 728, style.scss */
+.projects .container .projects-buttons .projects-button:hover {
   color: #ffffff;
   background-color: #998675;
   border: solid 1px #998675;
   -webkit-transition: color 0.1s linear;
   transition: color 0.1s linear;
 }
-/* line 427, style.scss */
-.projects .container .projects-button:last-child {
+/* line 734, style.scss */
+.projects .container .projects-buttons .projects-button:last-child {
   margin-right: 0;
 }
-/* line 431, style.scss */
+/* line 739, style.scss */
 .projects .container .projects-buttons-items {
+  width: 105%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
-/* line 434, style.scss */
+/* line 745, style.scss */
 .projects .container .projects-buttons-items .projects-item {
   width: 370px;
-  height: 337px;
+  height: auto;
   background-color: #fbfaf8;
-  margin-right: 30px;
-  margin-bottom: 30px;
+  margin: 0 15px 30px;
   text-align: left;
-  padding: 267px 30px 30px;
+  padding: 0 0 30px;
   position: relative;
 }
-/* line 443, style.scss */
-.projects .container .projects-buttons-items .projects-item:nth-child(3), .projects .container .projects-buttons-items .projects-item:nth-child(6) {
-  margin-right: 0;
-}
-/* line 447, style.scss */
-.projects .container .projects-buttons-items .projects-item:nth-child(4), .projects .container .projects-buttons-items .projects-item:nth-child(5), .projects .container .projects-buttons-items .projects-item:nth-child(6) {
-  margin-bottom: 40px;
-}
-/* line 452, style.scss */
+/* line 753, style.scss */
 .projects .container .projects-buttons-items .projects-item:hover {
   background-color: #362f2d;
   -webkit-transition: background-color 0.1s linear;
   transition: background-color 0.1s linear;
 }
-/* line 456, style.scss */
+/* line 757, style.scss */
 .projects .container .projects-buttons-items .projects-item::after {
   content: "";
   display: block;
   position: absolute;
-  top: 227px;
+  top: 228px;
   left: 20px;
   width: 0;
   height: 0;
@@ -583,54 +880,56 @@ header .container {
   border-right: 15px solid transparent;
   border-bottom: 10px solid #fbfaf8;
 }
-/* line 468, style.scss */
+/* line 769, style.scss */
 .projects .container .projects-buttons-items .projects-item:hover::after {
   border-bottom: 10px solid #362f2d;
   -webkit-transition: border-bottom 0.1s linear;
   transition: border-bottom 0.1s linear;
 }
-/* line 472, style.scss */
+/* line 773, style.scss */
 .projects .container .projects-buttons-items .projects-item h3 {
   font-family: "Raleway", sans-serif;
   font-size: 20px;
   padding-bottom: 10px;
+  padding: 30px 30px 0;
   font-weight: 300;
   color: #c7b299;
 }
-/* line 479, style.scss */
+/* line 781, style.scss */
 .projects .container .projects-buttons-items .projects-item:hover h3 {
   color: #ffffff;
   -webkit-transition: color 0.1s linear;
   transition: color 0.1s linear;
 }
-/* line 483, style.scss */
+/* line 785, style.scss */
 .projects .container .projects-buttons-items .projects-item p {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   line-height: 0.5;
+  padding: 10px 30px 0;
   color: #d1d1d1;
 }
-/* line 489, style.scss */
+/* line 792, style.scss */
 .projects .container .projects-buttons-items .projects-item:hover p {
   color: #c7b299;
   -webkit-transition: color 0.1s linear;
   transition: color 0.1s linear;
 }
-/* line 493, style.scss */
+/* line 796, style.scss */
 .projects .container .projects-buttons-items .projects-item .projects-item-image {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 370px;
   height: 237px;
 }
-/* line 499, style.scss */
+/* line 802, style.scss */
 .projects .container .projects-buttons-items .projects-item .projects-item-image img {
   position: absolute;
   top: 0;
   left: 0;
 }
-/* line 504, style.scss */
+/* line 807, style.scss */
 .projects .container .projects-buttons-items .projects-item .projects-item-image .fill {
   display: block;
   width: 100%;
@@ -641,7 +940,7 @@ header .container {
   left: 0;
   opacity: 0;
 }
-/* line 514, style.scss */
+/* line 817, style.scss */
 .projects .container .projects-buttons-items .projects-item .projects-item-image .link {
   display: block;
   width: 26px;
@@ -652,7 +951,7 @@ header .container {
   opacity: 0;
   background: url("../img/link.png");
 }
-/* line 524, style.scss */
+/* line 827, style.scss */
 .projects .container .projects-buttons-items .projects-item .projects-item-image .lupa {
   display: block;
   width: 26px;
@@ -663,39 +962,42 @@ header .container {
   opacity: 0;
   background: url("../img/lupa.png");
 }
-/* line 536, style.scss */
+/* line 839, style.scss */
 .projects .container .projects-buttons-items .projects-item:hover .fill {
   opacity: 0.3;
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 540, style.scss */
+/* line 843, style.scss */
 .projects .container .projects-buttons-items .projects-item:hover .projects-item-image a {
   opacity: 1;
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 544, style.scss */
+/* line 847, style.scss */
 .projects .container .projects-buttons-items .projects-item:hover .projects-item-image .link:hover {
   background: url("../img/link-hover.png");
   -webkit-transition: background 0.1s linear;
   transition: background 0.1s linear;
 }
-/* line 548, style.scss */
+/* line 851, style.scss */
 .projects .container .projects-buttons-items .projects-item:hover .projects-item-image .lupa:hover {
   background: url("../img/lupa-hover.png");
   -webkit-transition: background 0.1s linear;
   transition: background 0.1s linear;
 }
+/* line 857, style.scss */
+.projects .container .btn {
+  margin-top: 10px;
+}
 
-/*Создаём блок Video*/
-/* line 558, style.scss */
+/* line 864, style.scss */
 .video {
   width: 100%;
   height: 705px;
   background: url("../img/photo-video.jpg") no-repeat center top;
 }
-/* line 562, style.scss */
+/* line 868, style.scss */
 .video .container {
   height: 100%;
   display: -webkit-box;
@@ -714,128 +1016,156 @@ header .container {
   text-align: center;
   position: relative;
 }
-/* line 571, style.scss */
-.video .icon-background {
+/* line 876, style.scss */
+.video .container .icon-background {
   background-color: #000000;
   opacity: 0.2;
   width: 100px;
   height: 100px;
   border-radius: 50%;
   position: absolute;
-  top: 197px;
+  top: 210px;
 }
-/* line 580, style.scss */
-.video img {
-  padding-bottom: 58px;
-  z-index: 2;
+/* line 885, style.scss */
+.video .container img {
+  position: absolute;
+  top: 225px;
+  z-index: 1;
 }
-/* line 584, style.scss */
-.video h2 {
+/* line 890, style.scss */
+.video .container h2 {
   font-family: "Raleway", sans-serif;
   font-size: 30px;
   font-weight: 400;
   color: #ffffff;
+  padding-top: 130px;
 }
-/* line 590, style.scss */
-.video p {
+/* line 897, style.scss */
+.video .container p {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   line-height: 1.7;
   color: #ffffff;
-  width: 770px;
+  width: 70%;
   margin: 0 auto;
   padding: 15px 0 35px;
 }
-/* line 599, style.scss */
-.video span {
+/* line 906, style.scss */
+.video .container span {
   font-weight: 600;
   color: #c7b299;
 }
 
-/*Блок Mobile Device*/
-/* line 606, style.scss */
+/* line 914, style.scss */
 .mobile {
   width: 100%;
-  height: 695px;
+  height: auto;
+  padding: 0 20px;
 }
-/* line 609, style.scss */
+/* line 918, style.scss */
 .mobile .container {
-  height: 100%;
+  width: 100%;
+  height: auto;
   position: relative;
+  overflow: hidden;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-/* line 613, style.scss */
-.mobile img {
+/* line 925, style.scss */
+.mobile .container img {
   float: left;
+  width: auto;
+  height: auto;
   margin-top: 79px;
   margin-left: 80px;
+  position: relative;
+  bottom: 0;
 }
-/* line 618, style.scss */
-.mobile h2 {
+/* line 934, style.scss */
+.mobile .container div {
+  border: 1px solid red;
+  padding: 190px 0 0 20px;
+}
+/* line 937, style.scss */
+.mobile .container div h2 {
   font-family: "Raleway", sans-serif;
   font-size: 30px;
   color: #555555;
-  padding-top: 190px;
-  margin-left: 530px;
 }
-/* line 625, style.scss */
-.mobile p {
+/* line 942, style.scss */
+.mobile .container div p {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   line-height: 1.7;
   color: #8c8c8c;
   padding: 25px 0 35px;
-  margin-left: 530px;
 }
-/* line 633, style.scss */
-.mobile ul {
+/* line 949, style.scss */
+.mobile .container div ul {
   list-style: none;
-  margin-left: 565px;
-  width: 670px;
+  margin-left: 30px;
+  padding-right: 25px;
+  width: 100%;
+  height: auto;
 }
-/* line 637, style.scss */
-.mobile ul li {
+/* line 955, style.scss */
+.mobile .container div ul li {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   line-height: 1.7;
   color: #8c8c8c;
-  width: 770px;
+  width: 100%;
+  height: 100%;
   padding-bottom: 5px;
   padding-left: 50px;
   background: url("../img/bullet.png") no-repeat 0 3px;
 }
 
-/*Создаём блок Счётчики*/
-/* line 651, style.scss */
+/* line 972, style.scss */
 .counters {
   margin: 0;
   width: 100%;
-  height: 300px;
+  height: auto;
   background: -webkit-gradient(linear, left top, right top, from(#211b19), to(#4e3427));
   background: linear-gradient(left, #211b19, #4e3427);
+  padding: 30px 0 70px 0;
 }
-/* line 656, style.scss */
+/* line 978, style.scss */
 .counters .container {
-  width: 930px;
+  width: 100%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 300px;
 }
-/* line 662, style.scss */
+/* line 986, style.scss */
 .counters .container div {
+  width: 140px;
   text-align: center;
+  margin: 40px 30px 0;
 }
-/* line 664, style.scss */
+/* line 990, style.scss */
 .counters .container div img {
   margin-bottom: 8px;
 }
-/* line 667, style.scss */
+/* line 993, style.scss */
 .counters .container div p {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
@@ -844,7 +1174,7 @@ header .container {
   color: #c7b299;
   position: relative;
 }
-/* line 674, style.scss */
+/* line 1000, style.scss */
 .counters .container div p span {
   font-family: "Montserrat", sans-serif;
   font-size: 48px;
@@ -853,7 +1183,7 @@ header .container {
   color: #ffffff;
   line-height: 1.5;
 }
-/* line 683, style.scss */
+/* line 1009, style.scss */
 .counters .container div .lines {
   width: 30px;
   height: 2px;
@@ -861,15 +1191,15 @@ header .container {
   margin: 30px auto 0;
 }
 
-/*Cоздаём блок Recent*/
-/* line 694, style.scss */
+/* line 1020, style.scss */
 .recent {
   width: 100%;
-  height: 753px;
+  height: auto;
 }
-/* line 697, style.scss */
+/* line 1023, style.scss */
 .recent .container {
-  height: 100%;
+  width: 100%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -883,95 +1213,103 @@ header .container {
   text-align: center;
   padding: 80px 30px;
 }
-/* line 704, style.scss */
+/* line 1031, style.scss */
 .recent .container h2 {
   font-family: "Raleway", sans-serif;
   font-size: 30px;
   font-weight: 600;
   color: #555555;
 }
-/* line 710, style.scss */
+/* line 1037, style.scss */
 .recent .container > p {
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
   line-height: 1.7;
   color: #8c8c8c;
-  width: 770px;
+  width: 70%;
   margin: 0 auto;
-  padding: 15px 0 35px;
+  padding: 15px 0 0;
 }
-/* line 719, style.scss */
+/* line 1046, style.scss */
 .recent .container .recent-buttons-items {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   width: 100%;
+  height: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-/* line 722, style.scss */
+/* line 1052, style.scss */
 .recent .container .recent-buttons-items .recent-item {
   width: 370px;
-  height: 395px;
+  height: auto;
   border: solid 1px #f8f8f8;
+  margin-top: 30px;
   margin-right: 30px;
-  padding: 250px 30px 30px;
   text-align: left;
   position: relative;
+  padding-bottom: 30px;
 }
-/* line 730, style.scss */
+/* line 1061, style.scss */
 .recent .container .recent-buttons-items .recent-item:hover {
   background-color: #362f2d;
   border-color: #362f2d;
   -webkit-transition: background-color 0.1s linear, border- color 0.1s linear;
   transition: background-color 0.1s linear, border- color 0.1s linear;
 }
-/* line 735, style.scss */
+/* line 1066, style.scss */
 .recent .container .recent-buttons-items .recent-item:last-child {
   margin-right: 0;
 }
-/* line 738, style.scss */
+/* line 1069, style.scss */
 .recent .container .recent-buttons-items .recent-item h3 {
   font-family: "Raleway", sans-serif;
   font-size: 20px;
-  padding-bottom: 10px;
+  padding: 30px 30px 10px;
   font-weight: 500;
   color: #555555;
 }
-/* line 745, style.scss */
+/* line 1076, style.scss */
 .recent .container .recent-buttons-items .recent-item:hover h3 {
   color: #c7b299;
   -webkit-transition: color 0.1s linear;
   transition: color 0.1s linear;
 }
-/* line 749, style.scss */
+/* line 1080, style.scss */
 .recent .container .recent-buttons-items .recent-item p {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   line-height: 22px;
   color: #8c8c8c;
-  padding-bottom: 25px;
+  padding: 0 30px 25px;
 }
-/* line 756, style.scss */
+/* line 1087, style.scss */
 .recent .container .recent-buttons-items .recent-item:hover p {
   color: #ffffff;
   -webkit-transition: color 0.1s linear;
   transition: color 0.1s linear;
 }
-/* line 760, style.scss */
-.recent .container .recent-buttons-items .recent-item a {
+/* line 1091, style.scss */
+.recent .container .recent-buttons-items .recent-item .read-more-arrow {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #c7b299;
+  padding: 0 30px;
 }
-/* line 766, style.scss */
+/* line 1098, style.scss */
 .recent .container .recent-buttons-items .recent-item .recent-item-image {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
-  width: 369px;
+  width: 370px;
   height: 220px;
 }
-/* line 772, style.scss */
+/* line 1104, style.scss */
 .recent .container .recent-buttons-items .recent-item .recent-item-image img {
   width: 100%;
   height: 100%;
@@ -979,7 +1317,7 @@ header .container {
   top: 0;
   left: 0;
 }
-/* line 779, style.scss */
+/* line 1111, style.scss */
 .recent .container .recent-buttons-items .recent-item .recent-item-image .fill {
   display: block;
   width: 100%;
@@ -990,7 +1328,7 @@ header .container {
   left: 0;
   opacity: 0;
 }
-/* line 789, style.scss */
+/* line 1121, style.scss */
 .recent .container .recent-buttons-items .recent-item .recent-item-image .date {
   width: 50px;
   height: 60px;
@@ -1009,7 +1347,7 @@ header .container {
   top: 20px;
   left: 20px;
 }
-/* line 801, style.scss */
+/* line 1133, style.scss */
 .recent .container .recent-buttons-items .recent-item .recent-item-image .date .day {
   width: 100%;
   height: 35px;
@@ -1019,7 +1357,7 @@ header .container {
   font-size: 24px;
   line-height: 35px;
 }
-/* line 810, style.scss */
+/* line 1142, style.scss */
 .recent .container .recent-buttons-items .recent-item .recent-item-image .date .month {
   width: 100%;
   height: 25px;
@@ -1029,34 +1367,34 @@ header .container {
   font-size: 14px;
   line-height: 25px;
 }
-/* line 820, style.scss */
-.recent .container .recent-buttons-items .recent-item .recent-item-image .pagination {
+/* line 1153, style.scss */
+.recent .container .recent-buttons-items .recent-item .recent-item-image .pagination .pagination-list {
   margin-top: 185px;
 }
-/* line 822, style.scss */
+/* line 1155, style.scss */
 .recent .container .recent-buttons-items .recent-item .recent-item-image .pagination .pagination-list li {
   margin: 0 3px;
   padding: 2px;
 }
-/* line 829, style.scss */
+/* line 1163, style.scss */
 .recent .container .recent-buttons-items .recent-item:hover .fill {
   opacity: 0.7;
   -webkit-transition: opacity 0.1s linear;
   transition: opacity 0.1s linear;
 }
-/* line 834, style.scss */
+/* line 1168, style.scss */
 .recent .container .recent-buttons-items .recent-item:hover .recent-item-image .day {
   background-color: #c7b299;
   -webkit-transition: background-color 0.1s linear;
   transition: background-color 0.1s linear;
 }
-/* line 838, style.scss */
+/* line 1172, style.scss */
 .recent .container .recent-buttons-items .recent-item:hover .recent-item-image .month {
   background-color: #a48d72;
   -webkit-transition: background-color 0.1s linear;
   transition: background-color 0.1s linear;
 }
-/* line 844, style.scss */
+/* line 1178, style.scss */
 .recent .container .recent-buttons-items .recent-item .read-more-arrow::after {
   content: "";
   display: inline-block;
@@ -1068,7 +1406,7 @@ header .container {
   line-height: 20px;
   margin-left: 10px;
 }
-/* line 858, style.scss */
+/* line 1192, style.scss */
 .recent .container .arrows {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1080,7 +1418,7 @@ header .container {
           justify-content: space-between;
   margin-top: 40px;
 }
-/* line 864, style.scss */
+/* line 1198, style.scss */
 .recent .container .arrows div {
   width: 21px;
   height: 21px;
@@ -1088,7 +1426,7 @@ header .container {
   border: solid 2px #d1d1d1;
   position: relative;
 }
-/* line 871, style.scss */
+/* line 1205, style.scss */
 .recent .container .arrows .left::after,
 .recent .container .arrows .right::after {
   content: "";
@@ -1099,17 +1437,17 @@ header .container {
   border-left: solid 2px #d1d1d1;
   position: absolute;
   top: 5px;
-  left: 5px;
+  left: 6px;
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
-/* line 884, style.scss */
+/* line 1218, style.scss */
 .recent .container .arrows .right::after {
   left: 4px;
   -webkit-transform: rotate(135deg);
           transform: rotate(135deg);
 }
-/* line 888, style.scss */
+/* line 1222, style.scss */
 .recent .container .arrows .left:hover,
 .recent .container .arrows .right:hover,
 .recent .container .arrows .left:hover::after,
@@ -1119,51 +1457,67 @@ header .container {
   transition: border- color 0.1s linear;
 }
 
-/*Блок с логотипами*/
-/* line 900, style.scss */
+/* line 1234, style.scss */
 .logos {
   width: 100%;
-  height: 489px;
-  background: url("../img/photo-bottom.jpg") no-repeat center top;
+  height: auto;
+  background: url("../img/photo.jpg") no-repeat center top;
 }
-/* line 904, style.scss */
+/* line 1238, style.scss */
 .logos .container {
-  height: inherit;
+  width: 100%;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 120px 0;
+}
+/* line 1247, style.scss */
+.logos .container img {
+  margin: 20px 45px;
 }
 
-/*Футер*/
-/*Делаем верхнюю часть футера*/
-/* line 915, style.scss */
+/* line 1256, style.scss */
 .footing {
   width: 100%;
-  height: 508px;
+  height: auto;
   background-color: #191919;
-  padding: 80px 0;
+  padding: 65px 0 10px;
 }
-/* line 920, style.scss */
+/* line 1261, style.scss */
 .footing .container {
-  height: inherit;
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
-/* line 924, style.scss */
+/* line 1267, style.scss */
 .footing .container > div {
   width: 270px;
+  margin: 20px 10px;
 }
-/* line 927, style.scss */
+/* line 1271, style.scss */
 .footing .container h3 {
   font-family: "Raleway", sans-serif;
   font-size: 24px;
@@ -1172,11 +1526,11 @@ header .container {
   padding-top: 15px;
   padding-bottom: 30px;
 }
-/* line 935, style.scss */
+/* line 1279, style.scss */
 .footing .container img {
   padding-bottom: 30px;
 }
-/* line 938, style.scss */
+/* line 1282, style.scss */
 .footing .container p {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
@@ -1184,29 +1538,29 @@ header .container {
   line-height: 20px;
   color: #555555;
 }
-/* line 945, style.scss */
+/* line 1289, style.scss */
 .footing .container a {
   color: #00bff3;
 }
-/* line 949, style.scss */
+/* line 1293, style.scss */
 .footing .container .readmore p {
   line-height: 24px;
   padding-bottom: 30px;
 }
-/* line 953, style.scss */
+/* line 1297, style.scss */
 .footing .container .readmore .read-more-arrow {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #d1d1d1;
 }
-/* line 959, style.scss */
+/* line 1303, style.scss */
 .footing .container .readmore .read-more-arrow:hover {
   color: #c7b299;
   -webkit-transition: color 0.1s linear;
   transition: color 0.1s linear;
 }
-/* line 963, style.scss */
+/* line 1307, style.scss */
 .footing .container .readmore .read-more-arrow::after {
   content: "";
   display: inline-block;
@@ -1218,59 +1572,59 @@ header .container {
   line-height: 20px;
   margin-left: 10px;
 }
-/* line 974, style.scss */
+/* line 1318, style.scss */
 .footing .container .readmore .read-more-arrow:hover::after {
   border-left: 5px solid #c7b299;
   -webkit-transition: border-left 0.1s linear;
   transition: border-left 0.1s linear;
 }
-/* line 980, style.scss */
+/* line 1324, style.scss */
 .footing .container .recentposts div {
   padding: 20px 0;
   border-bottom: solid 1px #252525;
 }
-/* line 983, style.scss */
+/* line 1327, style.scss */
 .footing .container .recentposts div:first-of-type {
   padding-top: 0;
 }
-/* line 986, style.scss */
+/* line 1330, style.scss */
 .footing .container .recentposts div:last-of-type {
   border-bottom: none;
 }
-/* line 989, style.scss */
+/* line 1333, style.scss */
 .footing .container .recentposts div p {
   padding-top: 5px;
 }
-/* line 992, style.scss */
+/* line 1336, style.scss */
 .footing .container .recentposts div:hover .date-time {
   color: #ffffff;
   -webkit-transition: color 0.1s linear;
   transition: color 0.1s linear;
 }
-/* line 996, style.scss */
+/* line 1340, style.scss */
 .footing .container .recentposts div:hover p {
   color: #c7b299;
   -webkit-transition: color 0.1s linear;
   transition: color 0.1s linear;
 }
-/* line 1003, style.scss */
+/* line 1347, style.scss */
 .footing .container .ourtwitter div {
   padding: 20px 0;
   border-bottom: solid 1px #252525;
 }
-/* line 1006, style.scss */
+/* line 1350, style.scss */
 .footing .container .ourtwitter div:first-of-type {
   padding-top: 0;
 }
-/* line 1009, style.scss */
+/* line 1353, style.scss */
 .footing .container .ourtwitter div:last-of-type {
   border-bottom: none;
 }
-/* line 1013, style.scss */
+/* line 1357, style.scss */
 .footing .container .ourtwitter p {
   padding-bottom: 5px;
 }
-/* line 1016, style.scss */
+/* line 1360, style.scss */
 .footing .container .ourtwitter .date-time {
   font-family: "Montserrat", sans-serif;
   font-size: 12px;
@@ -1278,11 +1632,11 @@ header .container {
   line-height: 20px;
   color: #363636;
 }
-/* line 1023, style.scss */
+/* line 1367, style.scss */
 .footing .container .ourtwitter .light-gray {
   color: #959595;
 }
-/* line 1027, style.scss */
+/* line 1371, style.scss */
 .footing .container .dribbble-images {
   height: 206px;
   display: -webkit-box;
@@ -1296,68 +1650,284 @@ header .container {
   -ms-flex-line-pack: justify;
       align-content: space-between;
 }
-/* line 1033, style.scss */
+/* line 1377, style.scss */
 .footing .container .dribbble-images img {
   padding-bottom: 0;
 }
 
-/*Делаем нижнюю часть футера*/
-/* line 1041, style.scss */
+/* line 1385, style.scss */
 .copyright {
   width: 100%;
-  height: 100px;
+  height: auto;
   background-color: #111111;
   font-family: "Montserrat", sans-serif;
   font-size: 13px;
   font-weight: 500;
   line-height: 20px;
   color: #555555;
+  padding: 25px 0;
 }
-/* line 1050, style.scss */
+/* line 1395, style.scss */
 .copyright .container {
-  height: inherit;
+  height: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
-/* line 1055, style.scss */
+/* line 1402, style.scss */
 .copyright .container ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   list-style: none;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 20px;
 }
-/* line 1059, style.scss */
+/* line 1408, style.scss */
 .copyright .container .copyright-first li {
   padding: 0 12px;
   border-right: solid 1px #252525;
 }
-/* line 1062, style.scss */
+/* line 1411, style.scss */
 .copyright .container .copyright-first li:last-of-type {
   border-right: none;
 }
-/* line 1066, style.scss */
+/* line 1415, style.scss */
 .copyright .container .copyright-second li {
   padding: 0 12px;
   border-left: solid 1px #252525;
 }
-/* line 1069, style.scss */
+/* line 1418, style.scss */
 .copyright .container .copyright-second li:first-of-type {
   border-left: none;
 }
-/* line 1073, style.scss */
+/* line 1422, style.scss */
 .copyright .container a {
   color: #555555;
 }
-/* line 1075, style.scss */
+/* line 1424, style.scss */
 .copyright .container a:hover {
   color: #c7b299;
   -webkit-transition: color 0.1s linear;
   transition: color 0.1s linear;
+}
+
+@media (max-width: 1230px) {
+  /* line 1439, style.scss */
+  .realization img {
+    width: 100%;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+
+  /* line 1444, style.scss */
+  .projects {
+    height: auto;
+  }
+
+  /*.counters {
+  	.container {
+  		div {
+  			width: 50%;
+  		}
+  		div:last-child {
+  			flex-grow: 1;
+  		}
+  	}
+  }*/
+}
+@media (max-width: 1050px) {
+  /* line 1461, style.scss */
+  header .heading {
+    padding: 20px;
+    padding-left: 30px;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  /* line 1465, style.scss */
+  header .heading .logo {
+    margin-right: 0;
+  }
+  /* line 1469, style.scss */
+  header .heading nav ul {
+    display: none;
+  }
+  /* line 1473, style.scss */
+  header .heading nav.active ul {
+    display: block;
+  }
+  /* line 1478, style.scss */
+  header .heading.fixed {
+    padding: 20px;
+  }
+  /* line 1481, style.scss */
+  header .heading .burger-menu {
+    display: block;
+  }
+  /* line 1487, style.scss */
+  header .advantages ul {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    padding-top: 0;
+  }
+  /* line 1490, style.scss */
+  header .advantages ul li {
+    width: 50%;
+    margin-top: 70px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  /* line 1495, style.scss */
+  header .advantages ul li::after {
+    margin-bottom: 20px;
+  }
+}
+@media (max-width: 1050px) and (max-width: 990px) {
+  /* line 1506, style.scss */
+  .mobile .container img {
+    display: none;
+  }
+  /* line 1510, style.scss */
+  .mobile .container div h2 {
+    margin-left: 0;
+    padding-top: 80px;
+  }
+  /* line 1514, style.scss */
+  .mobile .container div p {
+    margin-left: 0;
+  }
+  /* line 1517, style.scss */
+  .mobile .container div ul {
+    margin-left: 35px;
+    padding-bottom: 80px;
+  }
+}
+@media (max-width: 1050px) and (max-width: 770px) {
+  /* line 1529, style.scss */
+  header .slider .slick-arrow {
+    top: 45%;
+  }
+  /* line 1533, style.scss */
+  header .slider .slick-dots li {
+    margin: 0 10px;
+  }
+  /* line 1535, style.scss */
+  header .slider .slick-dots li button {
+    width: 15px;
+    height: 15px;
+  }
+  /* line 1541, style.scss */
+  header .slider .slick-dots.slick-active button {
+    width: 20px;
+    height: 20px;
+  }
+  /* line 1549, style.scss */
+  header .slider-item .slider-item-inner {
+    padding-top: 250px;
+  }
+  /* line 1551, style.scss */
+  header .slider-item .slider-item-inner h2 {
+    font-size: 28px;
+  }
+  /* line 1554, style.scss */
+  header .slider-item .slider-item-inner h1 {
+    font-size: 40px;
+  }
+
+  /* line 1563, style.scss */
+  .recent .container .arrows {
+    width: 93px;
+    height: 62px;
+  }
+  /* line 1566, style.scss */
+  .recent .container .arrows div {
+    width: 42px;
+    height: 42px;
+    border: solid 4px #d1d1d1;
+  }
+  /* line 1571, style.scss */
+  .recent .container .arrows .left::after,
+  .recent .container .arrows .right::after {
+    width: 16px;
+    height: 16px;
+    border-top: solid 4px #d1d1d1;
+    border-left: solid 4px #d1d1d1;
+    top: 9px;
+    left: 10px;
+  }
+  /* line 1580, style.scss */
+  .recent .container .arrows .right::after {
+    left: 7px;
+  }
+
+  /* line 1588, style.scss */
+  .wordpress .wordpress-text h2 {
+    font-size: 28px;
+  }
+  /* line 1592, style.scss */
+  .wordpress .btn {
+    line-height: 25px;
+    height: auto;
+    padding: 10px;
+    margin-left: 20px;
+  }
+}
+@media (max-width: 1050px) and (max-width: 575px) {
+  /* line 1604, style.scss */
+  header .slider .slick-arrow {
+    top: 40%;
+  }
+  /* line 1609, style.scss */
+  header .slider-item .slider-item-inner {
+    padding-top: 220px;
+  }
+  /* line 1611, style.scss */
+  header .slider-item .slider-item-inner h2 {
+    font-size: 28px;
+  }
+  /* line 1614, style.scss */
+  header .slider-item .slider-item-inner h1 {
+    font-size: 40px;
+  }
+  /* line 1617, style.scss */
+  header .slider-item .slider-item-inner .btn {
+    margin-top: 25px;
+  }
+
+  /* line 1625, style.scss */
+  .advantages ul li {
+    width: 100%;
+  }
+
+  /* line 1632, style.scss */
+  .realization .container p {
+    width: 100%;
+  }
+
+  /* line 1639, style.scss */
+  .recent .container p {
+    width: 100%;
+  }
+
+  /*.counters {
+  	.container {
+  		div {
+  			width: 100%;
+  		}
+  	}
+  }*/
 }

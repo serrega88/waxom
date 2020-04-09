@@ -13,19 +13,19 @@ $color-transition: color 0.1s linear;
 /*Задаём шрифт странице*/
 body {
   font-family: $second-font;
-  font-size: 14px;
   color: $dark-grey-clr;
   width: 100%;
+  font-size: 14px;
 }
 
-/*Свойства width и height включают в себя значения полей и границ, но не отступов (margin).*/
+//Свойства width и height включают в себя значения полей и границ, но не отступов (margin).
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/*Задаём общие параметры кнопкам*/
+//Задаём общие параметры кнопкам
 .btn {
   display: inline-block;
   line-height: 50px;
@@ -45,12 +45,12 @@ body {
   }
 }
 
-/*Сбрасываем подчёркивание ссылок*/
+//Сбрасываем подчёркивание ссылок
 a {
   text-decoration: none;
 }
 
-/*Задаём общие параметры первого экрана*/
+//Задаём общие параметры первого экрана
 header {
   width: 100%;
   height: 100vh;
@@ -66,330 +66,634 @@ header {
 	}
 }
 
-/*Создаём выравнивающий контейнер*/
+//Создаём выравнивающий контейнер
 .container {
   width: 100%;
   max-width: 1230px;
   margin: 0 auto;
 }
 
-/*Создаём шапку*/
-.logo {
-  width: 181px;
-  height: 56px;
-}
-.heading {
-  padding-top: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  ul {
+//Создаём шапку
+header {
+	position: relative;
+	.heading {
+	  position: absolute;
+	  width: 100%;
+	  top: 0;
+	  left: 0;
+	  padding-top: 40px;
 	  display: flex;
-	  justify-content: space-between;
-	  list-style: none;
-	}
-  li {
-	  margin-left: 30px; 
-	  &:nth-last-child(2) {
-	  	  margin-left: 60px;
+	  justify-content: center;
+	  align-items: center;
+	  z-index: 5;
+	  //Делаем фиксированную панель навигации
+	  &.fixed {
+		  position: fixed;
+		  top: 0;
+		  left: 0;
+		  right: 0;
+		  background-color: $dark-brown-clr;
+		  transition: background-color 0.1s linear;
+		  z-index: 5;
+		  opacity: 0.9;
+		  padding: 10px 15%;
+		}
+	  .logo {
+		  width: 181px;
+		  height: 56px;
+		  z-index: 5;
+		  margin-right: 10%;
+		}
+	  nav {
+		  ul {
+		  	  display: flex;
+			  justify-content: space-between;
+			  list-style: none;
+		  	  li {
+				  margin-left: 30px; 
+				  &:nth-last-child(2) {
+				  	  margin-left: 60px;
+					}
+				  a {
+					  color: $white-clr;
+					  text-decoration: none;
+					  &:hover {
+						  color: $hover-clr;
+						  transition: $color-transition;
+						}
+
+					}
+				}
+			}
+			&.active {
+				ul {
+					display: none;
+					position: absolute;
+					top: 0;
+					left: 0;
+					right: 0;
+					padding: 100px 30px 30px;
+					background-color: $dark-brown-clr;
+					flex-direction: column;
+					align-items: flex-start;
+					li {
+						font-size: 18px;
+						margin: 0;
+						padding: 10px;
+						&:nth-last-child(2) {
+				  	  		margin-left: 0;
+				  	  	}
+					}
+				}
+			}
+		}
+		.icon-cart {
+		  display: block;
+		  width: 18px;
+		  height: 24px;
+		  background: url("../img/icon-cart.png");
+		  &:hover {
+			  background: url("../img/icon-cart-hover.png");
+			  transition: background 0.1s linear;
+			}
+		}
+	  .icon-search {
+		  display: block;
+		  width: 24px;
+		  height: 24px;
+		  background: url("../img/icon-search.png");
+		  &:hover {
+			  background: url("../img/icon-search-hover.png");
+			  transition: background 0.1s linear;
+			}
+		}
+		//Делаем бургер-меню
+		.burger-menu {
+			display: none;
+			width: 30px;
+			position: absolute;
+			top: 40px;
+			right: 40px;
+			z-index: 5;
+			padding: 10px 0;
+			font-size: 0;
+			color: transparent;
+			border: none;
+			background: none;
+			cursor: pointer;
+			&:focus {
+				outline: 0;
+			}
+			.burger {
+				display: block;
+				width: 100%;
+				height: 3px;
+				background-color: $white-clr;
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				margin: auto;
+				transition: background 0.1s linear;
+				&::before,
+				&::after {
+					content: "";
+					width: 100%;
+					height: 3px;
+					background-color: $white-clr;
+					position: absolute;
+					left: 0;
+					z-index: 1;
+					transition: transform 0.1s linear;
+				}
+				&::before {
+					top: -8px;
+				}
+				&::after {
+					bottom: -8px;
+				}
+			}
+			&.active {
+				border: 0;
+				.burger {
+					background: none;
+					&::before {
+						transform-origin: left top;
+						transform: rotate(45deg) translateX(-3px);
+						transition: transform 0.1s linear;
+					}
+					&::after {
+						transform-origin: left bottom;
+						transform: rotate(-45deg) translateX(-3px);
+						transition: transform 0.1s linear;
+					}
+				}
+			}
 		}
 	}
-  a {
+
+//Слайдер на главном экране
+
+//Слайдер
+.slick-slider{
+	min-width: 0;
+}
+//Слайдер запущен
+.slick-slider.slick-initialized{}
+//Слайдер с точками
+.slick-slider.slick-dotted{}
+
+//Ограничивающая оболочка
+.slick-list {
+	overflow: hidden;
+}
+//Лента слайдов
+.slick-track{
+	display: flex;
+}
+
+//Слайд
+.slick-slide{}
+//Слайд активный (показывается)
+.slick-slide.slick-active{}
+//Слайд основной
+.slick-slide.slick-current{}
+//Слайд по центру
+.slick-slide.slick-center{}
+//Клонированный слайд
+.slick-slide.slick-cloned{}
+
+//Стрелка
+.slick-arrow{}
+//Стрелка влево
+.slick-arrow.slick-prev{}
+//Стрелка вправо
+.slick-arrow.slick-next{}
+//Стрелка не активная
+.slick-arrow.slick-disabled{}
+
+//Точки (булиты)
+.slick-dots{}
+.slick-dots li{}
+//Активная точка
+.slick-dots li.slick-active{}
+//Элемент точки
+.slick-dots li button{}
+
+
+
+//Конкретный слайдер
+.slider {
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	background: url("../img/photo.jpg") no-repeat center top;
+	background-size: cover;
+	display: flex;
+	//Стрелки
+	.slick-arrow {
+		position: absolute;
+		top: 50%;
+		z-index: 3;
+		font-size: 0;
+		width: 50px;
+		height: 50px;
+		background: none;
+		border: solid white;
+		border-width: 0 3px 3px 0;
+		opacity: 0.5;
+		display: inline-block;
+		cursor: pointer;
+		&.slick-prev {
+			left: 40px;
+		    transform: rotate(135deg);
+		}
+		&.slick-next {
+			right: 40px;
+		    transform: rotate(-45deg);
+		}
+		&:focus {
+			outline: 0;
+		}
+	}
+	//Пагинация
+	.slick-dots{
+		width: 100%;
+		position: absolute;
+		bottom: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		li {
+			list-style: none;
+			margin: 0 5px;
+			button {
+				font-size: 0;
+				width: 10px;
+				height: 10px;
+				background-color: rgba(255,255,255,0.5);
+				cursor: pointer;
+				border: transparent;
+				border-radius: 50%;
+				&:focus {
+					outline: 0;
+				}
+			}
+			&.slick-active {
+				button {
+				  width: 15px;
+				  height: 15px;
+				  background-color: transparent;
+				  border: solid 2px rgba(255,255,255,.5);
+				}
+			}
+		}
+	}
+}
+//Слайд
+.slider-item {
+  .slider-item-inner {
+  	  display: flex;
+	  flex-direction: column;
+	  justify-content: flex-start;
+	  align-items: center;
+	  color: white;
+	  text-align: center;
+	  width: 100%;
+	  height: 100vh;
+	  min-width: 0;
+	  margin: 0 auto;
+	  padding: 300px 90px 0;
+	  background: url("../img/photo.jpg") no-repeat center top;
+	  h1 {
+		  font-family: $main-font;
+		  font-size: 52px;
+		  font-weight: 700;
+		  margin: 5px 0 15px 0;
+		  padding: 0;
+		}
+	  h2 {
+		  font-family: $main-font;
+		  font-size: 36px;
+		  font-weight: 500;
+		  margin: 0;
+		  padding: 0;
+		}
+	  p {
+		  font-family: $second-font;
+		  font-size: 16px;
+		  font-weight: 300;
+		  line-height: 1.5;
+		  margin: 0;
+		  padding: 0;
+		}
+	  .btn {
+	  	  margin-top: 50px;
+		}
+	}
+}
+
+
+	/*Создаём коммерческое предложение на главном экране
+	.offer {
 	  color: $white-clr;
-	  text-decoration: none;
-	  &:hover {
-		  color: $hover-clr;
-		  transition: $color-transition;
+	  text-align: center;
+	  max-width: 600px;
+	  margin: 0 auto;
+	  h1 {
+		  font-family: $main-font;
+		  font-size: 52px;
+		  font-weight: 700;
+		  margin: 5px 0 15px 0;
+		  padding: 0;
+		}
+	  h2 {
+		  font-family: $main-font;
+		  font-size: 36px;
+		  font-weight: 500;
+		  margin: 0;
+		  padding: 0;
+		}
+	  p {
+		  font-family: $second-font;
+		  font-size: 16px;
+		  font-weight: 300;
+		  line-height: 1.5;
+		  margin: 0;
+		  padding: 0;
+		}
+	  .btn {
+		  margin-top: 50px;
 		}
 	}
-  .icon-cart {
-	  display: block;
-	  width: 18px;
-	  height: 24px;
-	  background: url("../img/icon-cart.png");
-	  &:hover {
-		  background: url("../img/icon-cart-hover.png");
-		  transition: background 0.1s linear;
-		}
-	}
-  .icon-search {
-	  display: block;
-	  width: 24px;
-	  height: 24px;
-	  background: url("../img/icon-search.png");
-	  &:hover {
-		  background: url("../img/icon-search-hover.png");
-		  transition: background 0.1s linear;
-		}
-	}
-}
+	*/
 
-/*Создаём коммерческое предложение на главном экране*/
-.offer {
-  color: $white-clr;
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-  h1 {
-	  font-family: $main-font;
-	  font-size: 52px;
-	  font-weight: 700;
-	  margin: 5px 0 15px 0;
-	  padding: 0;
+	/*Пагинация
+	.pagination {
+	  margin-bottom: 40px;
+	  text-align: center;
 	}
-  h2 {
-	  font-family: $main-font;
-	  font-size: 36px;
-	  font-weight: 500;
+	.pagination-list {
+	  display: inline-flex;
+	  justify-content: center;
+	  align-items: center;
 	  margin: 0;
 	  padding: 0;
-	}
-  p {
-	  font-family: $second-font;
-	  font-size: 16px;
-	  font-weight: 300;
-	  line-height: 1.5;
-	  margin: 0;
-	  padding: 0;
-	}
-  .btn {
-	  margin-top: 50px;
-	}
-}
-
-/*Создаём блок с пагинацией*/
-.pagination {
-  margin-bottom: 40px;
-  text-align: center;
-}
-.pagination-list {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  li {
-	  display: block;
-	  list-style: none;
-	  margin: 0 5px;
-	  padding: 2px;
-	  width: 15px;
-	  height: 15px;
-	  -moz-border-radius: 100%;
-	  -webkit-border-radius: 100%;
-	  border-radius: 100%;
-	  background-color: rgba(255,255,255,0);
-	  position: relative;
-	  &::before {
-		  content: "";
+	  li {
 		  display: block;
-		  width: 10px;
-		  height: 10px;
-		  -moz-border-radius: 100%;
-		  -webkit-border-radius: 100%;
-		  border-radius: 100%;
-		  background-color: rgba(255,255,255,.5);
-		  border: solid 2px rgba(255,255,255,0);
-		  position: absolute;
-		  top: 1px;
-		  left: .5px;
-		  opacity: 1;
-		}
-	  &::after {
-		  content: "";
-		  display: block;
+		  list-style: none;
+		  margin: 0 5px;
+		  padding: 2px;
 		  width: 15px;
 		  height: 15px;
 		  -moz-border-radius: 100%;
 		  -webkit-border-radius: 100%;
 		  border-radius: 100%;
 		  background-color: rgba(255,255,255,0);
-		  border: solid 2px rgba(255,255,255,1);
-		  position: absolute;
-		  top: -2px;
-		  left: -2px;
-		  opacity: 0;
-		}
-	  &:hover::before  {
-		  opacity: 0;
-		  transition: opacity 0.1s linear;
-		}
-	  &:hover::after  {
-		  opacity: 1;
-		  transition: opacity 0.1s linear;
-		}
-	}
-}
-
-/*Создаём блок с преимуществами*/
-.advantages {
-  width: 100%;
-  height: 373px;
-  background-color: $white-clr;
-  ul {
-	  display: flex;
-	  justify-content: space-around;
-	  align-items: flex-end;
-	  list-style: none;
-	  padding: 80px 0;
-	}
-  li {
-	  text-align: center;
-	  h3 {
-		  font-family: $main-font;
-		  font-size: 22px;
-		  font-weight: 600;
-		  color: $darkest-grey-clr;
-		  padding-top: 23px;
-		  padding-bottom: 15px;
-		}
-	  p {
-		  font-family: $second-font;
-		  font-size: 14px;
-		  font-weight: 500;
-		  line-height: 1.7;
-		  color: $dark-grey-clr;
 		  position: relative;
+		  cursor: pointer;
+		  &::before {
+			  content: "";
+			  display: block;
+			  width: 10px;
+			  height: 10px;
+			  -moz-border-radius: 100%;
+			  -webkit-border-radius: 100%;
+			  border-radius: 100%;
+			  background-color: rgba(255,255,255,.5);
+			  border: solid 2px rgba(255,255,255,0);
+			  position: absolute;
+			  top: 1px;
+			  left: .5px;
+			  opacity: 1;
+			}
 		  &::after {
 			  content: "";
 			  display: block;
-			  width: 70px;
-			  height: 3px;
-			  background-color: #f1eee9;
+			  width: 15px;
+			  height: 15px;
+			  -moz-border-radius: 100%;
+			  -webkit-border-radius: 100%;
+			  border-radius: 100%;
+			  background-color: rgba(255,255,255,0);
+			  border: solid 2px rgba(255,255,255,1);
 			  position: absolute;
-			  top: 135%;
-			  left: 40%;
-			  z-index: 1;
+			  top: -2px;
+			  left: -2px;
+			  opacity: 0;
+			}
+		  &:hover::before  {
+			  opacity: 0;
+			  transition: opacity 0.1s linear;
+			}
+		  &:hover::after  {
+			  opacity: 1;
+			  transition: opacity 0.1s linear;
 			}
 		}
-	  &:hover h3 {
-		  color: $hover-clr;
-		  transition: $color-transition;
-		}
-	  &:hover p::after {
-		  background-color: $hover-clr;
-		  transition: $bg-transition;
-		}
-	  .icon-webapp {
-		  width: 49px;
-		  height: 49px;
-		  margin: 0 auto;
-		  background: url("../img/icon-webapp.png");
-		}
-	  &:hover .icon-webapp {
-		  background: url("../img/icon-webapp-hover.png");
-		  transition: background 0.1s linear;
-		}
-	  .icon-dev {
-		  width: 44px;
-		  height: 40px;
-		  margin: 0 auto;
-		  background: url("../img/icon-dev.png");
-		}
-	  &:hover .icon-dev {
-		  background: url("../img/icon-dev-hover.png");
-		  transition: background 0.1s linear;
-		}
-	  .icon-cust {
-		  width: 44px;
-		  height: 44px;
-		  margin: 0 auto;
-		  background: url("../img/icon-cust.png");
-		}
-	  &:hover .icon-cust {
-		  background: url("../img/icon-cust-hover.png");
-		  transition: background 0.1s linear;
-		}
-	  .icon-mark {
-		  width: 52px;
-		  height: 36px;
-		  margin: 0 auto;
-		  background: url("../img/icon-mark.png");
-		}
-	  &:hover .icon-mark {
-		  background: url("../img/icon-mark-hover.png");
-		  transition: background 0.1s linear;
-		}
-	  &:hover p::after {
-		  background-color: $hover-clr;
-		  transition: $bg-transition;
+	}*/
+}
+
+//Создаём блок с преимуществами
+.advantages {
+  width: 100%;
+  height: auto;
+  background-color: $white-clr;
+  padding: 10px 20px 80px;
+  .container {
+  	  width: 100%;
+  	  height: auto;
+	  ul {
+		  display: flex;
+		  justify-content: center;
+		  align-items: flex-end;
+		  list-style: none;
+		  width: 100%;
+  		  height: 100%;
+  		  padding: 0;
+  		  margin: 0;
+  		  li {
+  		  	  display: block;
+  		  	  text-align: center;
+			  padding: 0 10px 30px;
+			  min-width: 250px;
+			  height: auto;
+			  h3 {
+				  font-family: $main-font;
+				  font-size: 22px;
+				  font-weight: 600;
+				  color: $darkest-grey-clr;
+				  padding-top: 23px;
+				  padding-bottom: 15px;
+				}
+			  p {
+				  font-family: $second-font;
+				  font-size: 14px;
+				  font-weight: 500;
+				  line-height: 1.7;
+				  color: $dark-grey-clr;
+				  position: relative;
+				  &::after {
+					  content: "";
+					  display: block;
+					  width: 70px;
+					  height: 3px;
+					  background-color: #f1eee9;
+					  position: relative;
+					  top: 25px;
+					  margin: 0 auto;
+					  z-index: 1;
+					}
+				}
+			  &:hover h3 {
+				  color: $hover-clr;
+				  transition: $color-transition;
+				}
+			  &:hover p::after {
+				  background-color: $hover-clr;
+				  transition: $bg-transition;
+				}
+			  .icon-webapp {
+				  width: 49px;
+				  height: 49px;
+				  margin: 0 auto;
+				  background: url("../img/icon-webapp.png");
+				}
+			  &:hover .icon-webapp {
+				  background: url("../img/icon-webapp-hover.png");
+				  transition: background 0.1s linear;
+				}
+			  .icon-dev {
+				  width: 44px;
+				  height: 40px;
+				  margin: 10px auto 0;
+				  background: url("../img/icon-dev.png");
+				}
+			  &:hover .icon-dev {
+				  background: url("../img/icon-dev-hover.png");
+				  transition: background 0.1s linear;
+				}
+			  .icon-cust {
+				  width: 44px;
+				  height: 44px;
+				  margin: 0 auto;
+				  background: url("../img/icon-cust.png");
+				}
+			  &:hover .icon-cust {
+				  background: url("../img/icon-cust-hover.png");
+				  transition: background 0.1s linear;
+				}
+			  .icon-mark {
+				  width: 52px;
+				  height: 36px;
+				  margin: 10px auto 0;
+				  background: url("../img/icon-mark.png");
+				}
+			  &:hover .icon-mark {
+				  background: url("../img/icon-mark-hover.png");
+				  transition: background 0.1s linear;
+				}
+			  &:hover p::after {
+				  background-color: $hover-clr;
+				  transition: $bg-transition;
+				}
+			}
 		}
 	}
 }
 
-/*Создаём блок Реализация*/
+//Создаём блок Реализация
 .realization {
   text-align: center;
   width: 100%;
-  height: 700px;
+  height: auto;
   background-color: #fbfaf8;
   padding: 0;
   margin: 0;
   padding-top: 75px;
-  h2 {
-	  font-family: $main-font;
-	  font-size: 30px;
-	  color: $darkest-grey-clr;
-	}
-  p {
-	  font-family: $second-font;
-	  font-size: 16px;
-	  line-height: 1.7;
-	  color: $dark-grey-clr;
-	  width: 770px;
-	  margin: 0 auto;
-	  padding: 15px 0 35px;
-	}
-  img {
-	  margin: 0;
-	  position: relative;
-	  top: 4px;
+  .container {
+  	  width: 100%;
+  	  height: auto;
+  	  position: relative;
+  	  h2 {
+		  font-family: $main-font;
+		  font-size: 30px;
+		  color: $darkest-grey-clr;
+		}
+	  p {
+		  font-family: $second-font;
+		  font-size: 16px;
+		  line-height: 1.7;
+		  color: $dark-grey-clr;
+		  margin: 0 auto;
+		  padding: 15px 0 35px;
+		  width: 70%;
+		}
+	  img {
+	  	  width: 100%;
+	  	  height: auto;
+		  margin: 0 auto;
+		  position: relative;
+		  bottom: -5;
+		  left: 0;
+		  object-fit: cover;
+		  padding: 0;
+		  border: 0;
+		}
 	}
 }
 
-/*Создаём блок Вордпресс*/
+//Создаём блок Вордпресс
 .wordpress {
   margin: 0;
   width: 100%;
-  height: 150px;
+  height: auto;
   background: linear-gradient(left, #211b19, #4e3427);
+  padding: 40px 0;
+  z-index: 2;
   .container {
 	  display: flex;
 	  justify-content: space-between;
+	  flex-direction: row;
 	  align-items: center;
-	  height: 150px;
+	  width: 100%;
+	  height: auto;
 	  padding: 0 30px;
-	  h2 {
-		  font-family: $main-font;
-		  font-size: 28px;
-		  font-weight: 400;
-		  color: $white-clr;
-		  .colortext {
-			  color: $hover-clr;
+	  .wordpress-text {
+	  	  h2 {
+			  font-family: $main-font;
+			  font-size: 28px;
+			  font-weight: 400;
+			  color: $white-clr;
+			  .colortext {
+				  color: $hover-clr;
+				}
 			}
-		}
-	  .wordpress p {
-		  font-family: $second-font;
-		  font-size: 18px;
-		  font-weight: 500;
-		  color: #615855;
-		  padding-top: 5px;
+		  p {
+			  font-family: $second-font;
+			  font-size: 18px;
+			  font-weight: 500;
+			  color: #615855;
+			  padding-top: 5px;
+			}
 		}
 	}
 }
 
-/*создаём блок Projects*/
+//создаём блок Projects
 .projects {
   width: 100%;
-  height: 1162px;
+  height: auto;
   .container {
-	  height: 100%;
+  	  width: 100%;
+	  height: auto;
 	  display: flex;
 	  flex-direction: column;
 	  align-items: center;
 	  text-align: center;
 	  padding: 80px 30px;
-	  &>h2 {
+  	  &>h2 {
 		  font-family: $main-font;
 		  font-size: 30px;
 		  color: $darkest-grey-clr;
@@ -399,56 +703,53 @@ header {
 		  font-size: 16px;
 		  line-height: 1.7;
 		  color: $dark-grey-clr;
-		  width: 770px;
 		  margin: 0 auto;
-		  padding: 15px 0 35px;
+		  padding-top: 15px;
+		  width: 70%;
 		}
-	  .projects-button {
-		  display: inline-block;
-		  line-height: 32px;
-		  text-align: center;
-		  width: auto;
-		  min-width: 70px;
-		  height: 32px;
-		  color: $dark-grey-clr;
-		  font-family: $main-font;
-		  font-size: 14px;
-		  background-color: $white-clr;
-		  border-radius: 3px;
-		  border: solid 1px #ebebeb;
-		  padding: 0 20px;
-		  margin: 0 6px 40px 0;
-		  &:hover {
-			  color: $white-clr;
-			  background-color: #998675;
-			  border: solid 1px #998675;
-			  transition: $color-transition;
-			}
-		  &:last-child {
-			  margin-right: 0;
+	  .projects-buttons {
+	  	  margin-top: 35px;
+	  	  margin-bottom: 35px;
+	  	  .projects-button {
+			  display: inline-block;
+			  line-height: 32px;
+			  text-align: center;
+			  width: auto;
+			  min-width: 70px;
+			  height: 32px;
+			  color: $dark-grey-clr;
+			  font-family: $main-font;
+			  font-size: 14px;
+			  background-color: $white-clr;
+			  border-radius: 3px;
+			  border: solid 1px #ebebeb;
+			  padding: 0 20px;
+			  margin: 0 6px 6px 0;
+			  &:hover {
+				  color: $white-clr;
+				  background-color: #998675;
+				  border: solid 1px #998675;
+				  transition: $color-transition;
+				}
+			  &:last-child {
+				  margin-right: 0;
+				}
 			}
 		}
 	  .projects-buttons-items {
+	  	  width: 105%;
+	  	  height: auto;
 		  display: flex;
+		  justify-content: center;
 		  flex-wrap: wrap;
 		  .projects-item {
 			  width: 370px;
-			  height: 337px;
+			  height: auto;
 			  background-color: #fbfaf8;
-			  margin-right: 30px;
-			  margin-bottom: 30px;
+			  margin: 0 15px 30px;
 			  text-align: left;
-			  padding: 267px 30px 30px;
+			  padding: 0 0 30px;
 			  position: relative;
-			  &:nth-child(3),
-			  &:nth-child(6) {
-				  margin-right: 0;
-				}
-			  &:nth-child(4),
-			  &:nth-child(5),
-			  &:nth-child(6) {
-				  margin-bottom: 40px;
-				}
 			  &:hover {
 				  background-color: $dark-brown-clr;
 				  transition: $bg-transition;
@@ -457,7 +758,7 @@ header {
 				  content: "";
 				  display: block;
 				  position: absolute;
-				  top: 227px;
+				  top: 228px;
 				  left: 20px;
 				  width: 0;
 				  height: 0;
@@ -473,6 +774,7 @@ header {
 				  font-family: $main-font;
 				  font-size: 20px;
 				  padding-bottom: 10px;
+				  padding: 30px 30px 0;
 				  font-weight: 300;
 				  color: $hover-clr;
 				}
@@ -484,6 +786,7 @@ header {
 				  font-family: $second-font;
 				  font-size: 14px;
 				  line-height: 0.5;
+				  padding: 10px 30px 0;
 				  color: $lightest-grey-clr;
 				}
 			  &:hover p {
@@ -491,7 +794,7 @@ header {
 				  transition: $color-transition;
 				}
 			  .projects-item-image {
-				  position: absolute;
+				  position: relative;
 				  top: 0;
 				  left: 0;
 				  width: 370px;
@@ -551,10 +854,13 @@ header {
 				}
 			}
 		}
+		.btn {
+			margin-top: 10px;
+		}
 	}
 }
 
-/*Создаём блок Video*/
+//Создаём блок Video
 .video {
   width: 100%;
   height: 705px;
@@ -567,100 +873,120 @@ header {
 	  align-items: center;
 	  text-align: center;
 	  position: relative;
-	}
-  .icon-background {
-	  background-color: #000000;
-	  opacity: 0.2;
-	  width: 100px;
-	  height: 100px;
-	  border-radius: 50%;
-	  position: absolute;
-	  top: 197px;
-	}
-  img {
-	  padding-bottom: 58px;
-	  z-index: 2;
-	}
-  h2 {
-	  font-family: $main-font;
-	  font-size: 30px;
-	  font-weight: 400;
-	  color: $white-clr;
-	}
-  p {
-	  font-family: $second-font;
-	  font-size: 16px;
-	  line-height: 1.7;
-	  color: $white-clr;
-	  width: 770px;
-	  margin: 0 auto;
-	  padding: 15px 0 35px;
-	}
-  span {
-	  font-weight: 600;
-	  color: $hover-clr;
-	}
-}
-
-/*Блок Mobile Device*/
-.mobile {
-  width: 100%;
-  height: 695px;
-  .container {
-	  height: 100%;
-	  position: relative;
-	}
-  img {
-	  float: left;
-	  margin-top: 79px;
-	  margin-left: 80px;
-	}
-  h2 {
-	  font-family: $main-font;
-	  font-size: 30px;
-	  color: $darkest-grey-clr;
-	  padding-top: 190px;
-	  margin-left: 530px;
-	}
-  p {
-	  font-family: $second-font;
-	  font-size: 16px;
-	  line-height: 1.7;
-	  color: $dark-grey-clr;
-	  padding: 25px 0 35px;
-	  margin-left: 530px;
-	}
-  ul {
-	  list-style: none; 
-	  margin-left: 565px;
-	  width: 670px;
-	  li {
+	  .icon-background {
+		  background-color: #000000;
+		  opacity: 0.2;
+		  width: 100px;
+		  height: 100px;
+		  border-radius: 50%;
+		  position: absolute;
+		  top: 210px;
+		}
+	  img {
+	  	  position: absolute;
+		  top: 225px;
+		  z-index: 1;
+		}
+	  h2 {
+		  font-family: $main-font;
+		  font-size: 30px;
+		  font-weight: 400;
+		  color: $white-clr;
+		  padding-top: 130px;
+		}
+	  p {
 		  font-family: $second-font;
 		  font-size: 16px;
 		  line-height: 1.7;
-		  color: $dark-grey-clr;
-		  width: 770px;
-		  padding-bottom: 5px;
-		  padding-left: 50px;
-		  background: url("../img/bullet.png") no-repeat 0 3px;
+		  color: $white-clr;
+		  width: 70%;
+		  margin: 0 auto;
+		  padding: 15px 0 35px;
+		}
+	  span {
+		  font-weight: 600;
+		  color: $hover-clr;
 		}
 	}
 }
 
-/*Создаём блок Счётчики*/
+//Блок Mobile Device
+.mobile {
+  width: 100%;
+  height: auto;
+  padding: 0 20px;
+  .container {
+  	  width: 100%;
+      height: auto;
+	  position: relative;
+	  overflow: hidden;
+	  flex-direction: row;
+	  justify-content: center;
+	  img {
+		  float: left;
+		  width: auto;
+		  height: auto;
+		  margin-top: 79px;
+		  margin-left: 80px;
+		  position: relative;
+		  bottom: 0;
+		}
+	  div {
+	  	border: 1px solid red;
+	  	padding: 190px 0 0 20px;
+		  h2 {
+			  font-family: $main-font;
+			  font-size: 30px;
+			  color: $darkest-grey-clr;
+			}
+		  p {
+			  font-family: $second-font;
+			  font-size: 16px;
+			  line-height: 1.7;
+			  color: $dark-grey-clr;
+			  padding: 25px 0 35px;
+			}
+		  ul {
+			  list-style: none; 
+			  margin-left: 30px;
+			  padding-right: 25px;
+			  width: 100%;
+			  height: auto;
+			  li {
+				  font-family: $second-font;
+				  font-size: 16px;
+				  line-height: 1.7;
+				  color: $dark-grey-clr;
+				  width: 100%;
+				  height: 100%;
+				  padding-bottom: 5px;
+				  padding-left: 50px;
+				  background: url("../img/bullet.png") no-repeat 0 3px;
+				}
+			}
+		}
+	}
+}
+
+//Создаём блок Счётчики
 .counters {
   margin: 0;
   width: 100%;
-  height: 300px;
+  height: auto;
   background: linear-gradient(left, #211b19, #4e3427);
+  padding: 30px 0 70px 0;
   .container {
-	  width: 930px;
+	  width: 100%;
+	  height: auto;
 	  display: flex;
-	  justify-content: space-between;
-	  align-items: center;
-	  height: 300px;
+	  flex-direction: row;
+	  flex-wrap: wrap;
+	  justify-content: center;
+	  align-items: center; 
 	  div {
+	  	  width: 140px;
 		  text-align: center;
+		  margin: 40px 30px 0;
 		  img {
 			  margin-bottom: 8px;
 			}
@@ -690,12 +1016,13 @@ header {
 	}
 }
 
-/*Cоздаём блок Recent*/
+//Cоздаём блок Recent
 .recent {
   width: 100%;
-  height: 753px;
+  height: auto;
   .container {
-	  height: 100%;
+  	  width: 100%;
+	  height: auto;
 	  display: flex;
 	  flex-direction: column;
 	  align-items: center;
@@ -712,21 +1039,25 @@ header {
 		  font-size: 16px;
 		  line-height: 1.7;
 		  color: $dark-grey-clr;
-		  width: 770px;
+		  width: 70%;
 		  margin: 0 auto;
-		  padding: 15px 0 35px;
+		  padding: 15px 0 0;
 		}
 	  .recent-buttons-items {
 		  display: flex;
+		  flex-wrap: wrap;
 		  width: 100%;
+		  height: auto;
+		  justify-content: center;
 		  .recent-item {
 			  width: 370px;
-			  height: 395px;
+			  height: auto;
 			  border: solid 1px #f8f8f8;
+			  margin-top: 30px;
 			  margin-right: 30px;
-			  padding: 250px 30px 30px;
 			  text-align: left;
 			  position: relative;
+			  padding-bottom: 30px;
 			  &:hover {
 				  background-color: $dark-brown-clr;
 				  border-color: $dark-brown-clr;
@@ -738,7 +1069,7 @@ header {
 			  h3 {
 				  font-family: $main-font;
 				  font-size: 20px;
-				  padding-bottom: 10px;
+				  padding: 30px 30px 10px;
 				  font-weight: 500;
 				  color: $darkest-grey-clr;
 				}
@@ -751,23 +1082,24 @@ header {
 				  font-size: 14px;
 				  line-height: 22px;
 				  color: $dark-grey-clr;
-				  padding-bottom: 25px;
+				  padding: 0 30px 25px;
 				}
 			  &:hover p {
 				  color: $white-clr;
 				  transition: $color-transition;
 				}
-			  a {
+			  .read-more-arrow {
 				  font-family: $second-font;
 				  font-size: 14px;
 				  line-height: 20px;
 				  color: $hover-clr;
+				  padding: 0 30px;
 				}
 			  .recent-item-image {
-				  position: absolute;
+				  position: relative;
 				  top: 0;
 				  left: 0;
-				  width: 369px;
+				  width: 370px;
 				  height: 220px;
 				  img {
 					  width: 100%;
@@ -818,10 +1150,12 @@ header {
 						}
 					}
 				  .pagination {
-					  margin-top: 185px;
-					  .pagination-list li {
-						  margin: 0 3px;
-						  padding: 2px;
+					  .pagination-list {
+						  margin-top: 185px;
+						  li {
+							  margin: 0 3px;
+							  padding: 2px;
+							}
 						}
 					}
 				}
@@ -856,13 +1190,13 @@ header {
 			}
 		}
 	  .arrows {
-		  display: flex;
+	  	  display: flex;
 		  width: 52px;
 		  height: 22px;
 		  justify-content: space-between;
 		  margin-top: 40px;
 		  div {
-			  width: 21px;
+		  	  width: 21px;
 			  height: 21px;
 			  border-radius: 50%;
 			  border: solid 2px $lightest-grey-clr;
@@ -878,7 +1212,7 @@ header {
 			  border-left: solid 2px $lightest-grey-clr;
 			  position: absolute;
 			  top: 5px;
-			  left: 5px;
+			  left: 6px;
 			  transform: rotate(-45deg);
 			}
 		  .right::after {
@@ -896,33 +1230,43 @@ header {
 	}
 }
 
-/*Блок с логотипами*/
+//Блок с логотипами
 .logos {
   width: 100%;
-  height: 489px;
-  background: url("../img/photo-bottom.jpg") no-repeat center top;
+  height: auto;
+  background: url("../img/photo.jpg") no-repeat center top;
   .container {
-	  height: inherit;
+  	  width: 100%;
+  	  height: auto;
 	  display: flex;
-	  justify-content: space-between;
+	  flex-direction: row;
+	  justify-content: center;
 	  align-items: center;
+	  flex-wrap: wrap;
+	  padding: 120px 0;
+	  img {
+	  	margin: 20px 45px;
+	  }
 	}
 }
 
-/*Футер*/
+//Футер
 
-/*Делаем верхнюю часть футера*/
+//Делаем верхнюю часть футера
 .footing {
   width: 100%;
-  height: 508px;
+  height: auto;
   background-color: #191919;
-  padding: 80px 0;
+  padding: 65px 0 10px;
   .container {
-	  height: inherit;
+	  height: 100%;
 	  display: flex;
-	  justify-content: space-between;
+	  flex-direction: row;
+	  justify-content: center;
+	  flex-wrap: wrap;
 	  &>div {
 		  width: 270px;
+		  margin: 20px 10px;
 		}
 	  h3 {
 		  font-family: $main-font;
@@ -1037,24 +1381,29 @@ header {
 	}
 }
 
-/*Делаем нижнюю часть футера*/
+//Делаем нижнюю часть футера
 .copyright {
   width: 100%;
-  height: 100px;
+  height: auto;
   background-color: $fill-clr;
   font-family: $second-font;
   font-size: 13px;
   font-weight: 500;
   line-height: 20px;
   color: $darkest-grey-clr;
+  padding: 25px 0;
   .container {
-	  height: inherit;
+	  height: auto;
 	  display: flex;
+	  flex-direction: row;
 	  justify-content: space-between;
 	  align-items: center;
+	  flex-wrap: wrap;
 	  ul {
 		  display: flex;
 		  list-style: none;
+		  flex-wrap: wrap;
+		  margin-top: 20px;
 		}
 	  .copyright-first li {
 		  padding: 0 12px;
@@ -1078,4 +1427,226 @@ header {
 			}
 		}
 	}
+}
+
+
+
+
+
+//Адаптив
+@media (max-width: 1230px) {
+	.realization {
+		img {
+			width: 100%;
+			object-fit: contain;
+		}
+	}
+	.projects {
+		height: auto;
+	}
+	/*.counters {
+		.container {
+			div {
+				width: 50%;
+			}
+			div:last-child {
+				flex-grow: 1;
+			}
+		}
+	}*/
+}
+
+@media (max-width: 1050px) {
+	header {
+		.heading {
+			padding: 20px;
+			padding-left: 30px;
+			justify-content: flex-start;
+			.logo {
+				margin-right: 0;
+			}
+			nav {
+				ul {
+					display: none;
+				}
+				&.active {
+					ul {
+						display: block;
+					}
+				}
+			}
+			&.fixed {
+				padding: 20px;
+			}
+			.burger-menu {
+				display: block;
+				
+			}
+		}
+	.advantages {
+		ul {
+			flex-wrap: wrap;
+			padding-top: 0;
+			li {
+				width: 50%;
+				margin-top: 70px;
+				padding-left: 5px;
+				padding-right: 5px;
+				&::after {
+					margin-bottom: 20px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 990px) {
+	.mobile {
+		.container {
+			img {
+				display: none;
+			}
+			div {
+				h2 {
+					margin-left: 0;
+					padding-top: 80px;
+				}
+				p {
+					margin-left: 0;
+				}
+				ul {
+					margin-left: 35px;
+					padding-bottom: 80px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 770px) {
+	header {
+		.slider {
+			.slick-arrow {
+				top: 45%;
+			}
+			.slick-dots{
+				li {
+					margin: 0 10px;
+					button {
+						width: 15px;
+						height: 15px;
+					}
+				}
+				&.slick-active {
+					button {
+					  width: 20px;
+					  height: 20px;
+					}
+				}
+			}
+		}
+		.slider-item {
+			.slider-item-inner {
+				padding-top: 250px;
+				h2 {
+					font-size: 28px;
+				}
+				h1 {
+					font-size: 40px;
+				}
+			}
+		}
+	}
+
+	.recent {
+		.container {
+			.arrows {
+			  width: 93px;
+			  height: 62px;
+			  div {
+				  width: 42px;
+				  height: 42px;
+				  border: solid 4px $lightest-grey-clr;
+				}
+			  .left::after,
+			  .right::after {
+				  width: 16px;
+				  height: 16px;
+				  border-top: solid 4px $lightest-grey-clr;
+			  	  border-left: solid 4px $lightest-grey-clr;
+			  	  top: 9px;
+			  	  left: 10px;
+				}
+			  .right::after {
+			  	  left: 7px;
+			  	}
+			}
+		}
+	}
+	.wordpress {
+		.wordpress-text {
+			h2 {
+				font-size: 28px;
+			}
+		}
+		.btn {
+		  line-height: 25px;
+		  height: auto;
+		  padding: 10px;
+		  margin-left: 20px;
+		}
+	}
+}
+
+@media (max-width: 575px) {
+	header {
+		.slider {
+			.slick-arrow {
+				top: 40%;
+			}
+		}
+		.slider-item {
+			.slider-item-inner {
+				padding-top: 220px;
+				h2 {
+					font-size: 28px;
+				}
+				h1 {
+					font-size: 40px;
+				}
+				.btn {
+					margin-top: 25px;
+				}
+			}
+		}
+	}
+	.advantages {
+		ul {
+			li {
+				width: 100%;
+			}
+		}
+	}
+	.realization {
+		.container {
+			p {
+				width: 100%;
+			}
+		}
+	}
+	.recent {
+		.container {
+			p {
+				width: 100%;
+			}
+		}
+	}
+	/*.counters {
+		.container {
+			div {
+				width: 100%;
+			}
+		}
+	}*/
+}
 }
