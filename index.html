@@ -5,7 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Waxom</title>
     <!--Стили-->
+    <!--Сброс стилей-->
     <link href="css/reset.css" rel="stylesheet">
+    <!--Стили для анимации при скроллинге AOS-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!--Стили для анимации Animate.css-->
+    <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <!--Шрифты-->
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900&display=swap&subset=latin-ext" rel="stylesheet">
@@ -19,14 +24,14 @@
         <img src="img\Waxom.png" alt="Waxom logo" class="logo">
         <nav>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Portfolio</a></li>
-            <li><a href="#">Features</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">Shortcodes</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="#advantages">Advantages</a></li>
+            <li><a href="#realization">Realization</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#video">Presentation</a></li>
+            <li><a href="#mobile">Mobile</a></li>
+            <li><a href="#counters">Counters</a></li>
+            <li><a href="#recent">Recent Posts</a></li>
+            <li><a href="#logos">Our Clients</a></li>
             <li><a href="#" class="icon-cart"></a></li>
             <li><a href="#" class="icon-search"></a></li>
           </ul>
@@ -39,10 +44,10 @@
       <div class="slider">
         <div class="slider-item">
           <div class="slider-item-inner">
-            <h2>Unique and Modern Design</h2>
-            <h1>Portfolio PSD Template</h1>
-            <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
-            <a href="#" class="btn">Get started</a>
+            <h2 class="wow fadeInUp" lang="ru">Сергей Никитин</h2>
+            <h1 class="wow fadeInUp" lang="ru">Вёрстка для портфолио</h1>
+            <p class="wow fadeInUp">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.</p>
+            <a href="WaxomHemepage.jpg" download target="_blank" class="btn" lang="ru">Открыть макет</a>
           </div>
         </div>
         <div class="slider-item">
@@ -92,25 +97,25 @@
       </div>
     </header>-->
 
-    <section class="advantages">
+    <section class="advantages"><a name="advantages"></a>
       <div class="container">
         <ul>
-          <li>
+          <li data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-webapp"></div>
             <h3>Web & App Design</h3>
             <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim.</p>
           </li>
-          <li>
+          <li data-aos="zoom-in" data-aos-delay="200">
             <div class="icon-dev"></div>
             <h3>Development</h3>
             <p>Lorem ipsum dolor sit amet, adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
           </li>
-          <li>
+          <li data-aos="zoom-in" data-aos-delay="300">
             <div class="icon-cust"></div>
             <h3>Customization</h3>
             <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim.</p>
           </li>
-          <li>
+          <li data-aos="zoom-in" data-aos-delay="400">
             <div class="icon-mark"></div>
             <h3>Marketing</h3>
             <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim.</p>
@@ -119,7 +124,7 @@
       </div>
     </section>
     
-    <section class="realization">
+    <section class="realization"><a name="realization"></a>
       <div class="container">
         <h2>Waxom is Realization of your Ideas</h2>
         <p>Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium.</p>
@@ -127,7 +132,7 @@
       </div>
     </section>
 
-    <section class="wordpress">
+    <section class="wordpress"><a name="wordpress"></a>
       <div class="container">
         <div class="wordpress-text">
           <h2><span class="colortext">Waxom</span> Multipurpose WordPress Theme</h2>
@@ -137,7 +142,7 @@
       </div>
     </section>
 
-    <section class="projects">
+    <section class="projects"><a name="projects"></a>
       <div class="container">
         <h2>Our Latest Projects.</h2>
         <p>Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium.</p>
@@ -209,154 +214,198 @@
             <h3>Usus Legentis Videntur</h3>
             <p>Photography. Holiday</p>
           </div>
+          <div class="projects-item projects-item-hidden">
+            <div class="projects-item-image">
+              <img src="img/photo-our1.jpg" width="370" height="237">
+              <div class="fill"></div>
+              <a href="#" class="link"></a>
+              <a href="#" class="lupa"></a>
+            </div>
+            <h3>Claritas Etiam Processus</h3>
+            <p>Photography Nature</p>
+          </div>
+          <div class="projects-item projects-item-hidden">
+            <div class="projects-item-image">
+              <img src="img/photo-our2.jpg" width="370" height="237">
+              <div class="fill"></div>
+              <a href="#" class="link"></a>
+              <a href="#" class="lupa"></a>
+            </div>
+            <h3>Quam Nutamus Farum</h3>
+            <p>Graphic Design, Mock-Up</p>
+          </div>
+          <div class="projects-item projects-item-hidden">
+            <div class="projects-item-image">
+              <img src="img/photo-our3.jpg" width="370" height="237">
+              <div class="fill"></div>
+              <a href="#" class="link"></a>
+              <a href="#" class="lupa"></a>
+            </div>
+          </div>
         </div>
-        <a href="#" class="btn">Load more</a>
+        <a href="#" class="btn" id="load-more">Load more</a>
       </div>
     </section>
 
-    <section class="video">
-      <dir class="container">
+    <section class="video"><a name="video"></a>
+      <div class="container" id="poster">
         <div class="icon-background"></div>
-        <img src="img/icon-play.png">
+        <img src="img/icon-play.png" id="play">
         <h2>Waxom Video Presentation</h2>
         <p>Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius, qui sequitur mutationem consuetudium.</p>
         <span>03:26</span>
-      </dir>
+      </div>
+      <div id="vid">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/FCPdIvXo2rU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
     </section>
 
-    <section class="mobile">
+    <section class="mobile"><a name="mobile"></a>
       <div class="container">
         <img src="img/iphone-in-hand.jpg" width="423" height="616">
         <div>
           <h2>Excellent for Mobile Devices.</h2>
           <p>Qisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius claritas. Eodem modo typi, qui nunc nobis videntur parum clari, fiant sollemnes in futurum.</p>
           <ul>
-            <li><span>Nam liber tempor cum soluta nobis eleifend option;</span></li>
-            <li><span>Option congue nihil imperdiet doming id quod mazim placerat facer;</span></li>
-            <li><span>Eodem modo typi, qui nunc nobis videntur parum futurum;</span></li>
-            <li><span>Investigationes demonstraverunt lectores</span></li>
+            <li data-aos="fade-left" data-aos-delay="100"><span>Nam liber tempor cum soluta nobis eleifend option;</span></li>
+            <li data-aos="fade-left" data-aos-delay="200"><span>Option congue nihil imperdiet doming id quod mazim placerat facer;</span></li>
+            <li data-aos="fade-left" data-aos-delay="300"><span>Eodem modo typi, qui nunc nobis videntur parum futurum;</span></li>
+            <li data-aos="fade-left" data-aos-delay="400"><span>Investigationes demonstraverunt lectores</span></li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="counters">
+    <section class="counters"><a name="counters"></a>
       <div class="container">
         <div>
           <img src="img/icon-people.png" width="44" height="44">
-          <p><span>3587</span><br>satisfied clients</p>
+          <p><span class="numeral">3587</span><br>satisfied clients</p>
           <div class="lines"></div>
         </div>
         <div>
           <img src="img/icon-coffee.png" width="48" height="44">
-          <p><span>207</span><br>cups of coffee</p>
+          <p><span class="numeral">207</span><br>cups of coffee</p>
           <div class="lines"></div>
         </div>
         <div>
           <img src="img/icon-talk.png" width="44" height="44">
-          <p><span>2500</span><br>blog posts</p>
+          <p><span class="numeral">2500</span><br>blog posts</p>
           <div class="lines"></div>
         </div>
         <div>
           <img src="img/icon-heart.png" width="44" height="44">
-          <p><span>873</span><br>likes</p>
+          <p><span class="numeral">873</span><br>likes</p>
           <div class="lines"></div>
         </div>
         <div>
           <img src="img/icon-dish.png" width="54" height="44">
-          <p><span>900</span><br>we launched</p>
+          <p><span class="numeral">900</span><br>we launched</p>
           <div class="lines"></div>
         </div>
       </div>
     </section>
 
-    <section class="recent">
+    <section class="recent"><a name="recent"></a>
       <div class="container">
         <h2>Recent Posts.</h2>
         <p>Investigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium.</p>
-        <div class="recent-buttons-items">
-          <div class="recent-item">
-            <div class="recent-item-image slider-2">
-              <div class="slider-item">
-                <div class="slider-item-inner">
-                  <img src="img/photo-rec1.jpg">
-                  <div class="fill"></div>
-                  <div class="date">
-                    <div class="day">30</div>
-                    <div class="month">Sep.</div>
-                  </div>
+        <div class="recent-buttons-items slider-3">
+          <div class="recent-item slider-item-3">
+            <div class="slider-item-inner-3">
+              <div class="recent-item-image">
+                <img src="img/photo-rec1.jpg" width="370" height="220">
+                <div class="fill"></div>
+                <div class="date">
+                  <div class="day">30</div>
+                  <div class="month">Sep.</div>
                 </div>
               </div>
-              <div class="slider-item">
-                <div class="slider-item-inner">
-                  <img src="img/photo-rec1.jpg">
-                  <div class="fill"></div>
-                  <div class="date">
-                    <div class="day">30</div>
-                    <div class="month">Sep.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="slider-item">
-                <div class="slider-item-inner">
-                  <img src="img/photo-rec1.jpg">
-                  <div class="fill"></div>
-                  <div class="date">
-                    <div class="day">30</div>
-                    <div class="month">Sep.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="slider-item">
-                <div class="slider-item-inner">
-                  <img src="img/photo-rec1.jpg">
-                  <div class="fill"></div>
-                  <div class="date">
-                    <div class="day">30</div>
-                    <div class="month">Sep.</div>
-                  </div>
-                </div>
-              </div>
-              <div class="slider-item">
-                <div class="slider-item-inner">
-                  <img src="img/photo-rec1.jpg">
-                  <div class="fill"></div>
-                  <div class="date">
-                    <div class="day">30</div>
-                    <div class="month">Sep.</div>
-                  </div>
-                </div>
-              </div>
+              <h3>Lorem ipsum dolor sit amet</h3>
+              <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium. <span class="dots">...</span><br><span class="more">Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium.</span></p>
+              <button class="read-more-arrow">Read More</button>
+              <div class="read-more-arrow-after"></div>
             </div>
-            <h3>Lorem ipsum dolor sit amet</h3>
-            <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium.</p>
-            <a href="#" class="read-more-arrow">Read More</a>
           </div>
-          <div class="recent-item">
-            <div class="recent-item-image">
-              <img src="img/photo-rec2.jpg" width="370" height="220">
-              <div class="fill"></div>
-              <div class="date">
-                <div class="day">30</div>
-                <div class="month">Sep.</div>
+          <div class="recent-item slider-item-3">
+            <div class="slider-item-inner-3">
+              <div class="recent-item-image">
+                <img src="img/photo-rec2.jpg" width="370" height="220">
+                <div class="fill"></div>
+                <div class="date">
+                  <div class="day">30</div>
+                  <div class="month">Sep.</div>
+                </div>
               </div>
+              <h3>Lorem ipsum dolor sit amet</h3>
+              <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium. <span class="dots">...</span><br><span class="more">Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium.</span></p>
+              <button class="read-more-arrow">Read More</button>
+              <div class="read-more-arrow-after"></div>
             </div>
-            <h3>Lorem ipsum dolor sit amet</h3>
-            <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium.</p>
-            <a href="#" class="read-more-arrow">Read More</a>
           </div>
-          <div class="recent-item">
-            <div class="recent-item-image">
-              <img src="img/photo-rec3.jpg" width="370" height="220">
-              <div class="fill"></div>
-              <div class="date">
-                <div class="day">30</div>
-                <div class="month">Sep.</div>
+          <div class="recent-item slider-item-3">
+            <div class="slider-item-inner-3">
+              <div class="recent-item-image">
+                <img src="img/photo-rec3.jpg" width="370" height="220">
+                <div class="fill"></div>
+                <div class="date">
+                  <div class="day">30</div>
+                  <div class="month">Sep.</div>
+                </div>
               </div>
+              <h3>Lorem ipsum dolor sit amet</h3>
+              <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium. <span class="dots">...</span><br><span class="more">Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium.</span></p>
+              <button class="read-more-arrow">Read More</button>
+              <div class="read-more-arrow-after"></div>
             </div>
-            <h3>Lorem ipsum dolor sit amet</h3>
-            <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium.</p>
-            <a href="#" class="read-more-arrow">Read More</a>
+          </div>
+          <div class="recent-item slider-item-3">
+            <div class="slider-item-inner-3">
+              <div class="recent-item-image">
+                <img src="img/photo-rec2.jpg" width="370" height="220">
+                <div class="fill"></div>
+                <div class="date">
+                  <div class="day">30</div>
+                  <div class="month">Sep.</div>
+                </div>
+              </div>
+              <h3>Lorem ipsum dolor sit amet</h3>
+              <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium. <span class="dots">...</span><br><span class="more">Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium.</span></p>
+              <button class="read-more-arrow">Read More</button>
+              <div class="read-more-arrow-after"></div>
+            </div>
+          </div>
+          <div class="recent-item slider-item-3">
+            <div class="slider-item-inner-3">
+              <div class="recent-item-image">
+                <img src="img/photo-rec3.jpg" width="370" height="220">
+                <div class="fill"></div>
+                <div class="date">
+                  <div class="day">30</div>
+                  <div class="month">Sep.</div>
+                </div>
+              </div>
+              <h3>Lorem ipsum dolor sit amet</h3>
+              <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium. <span class="dots">...</span><br><span class="more">Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium.</span></p>
+              <button class="read-more-arrow">Read More</button>
+              <div class="read-more-arrow-after"></div>
+            </div>
+          </div>
+          <div class="recent-item slider-item-3">
+            <div class="slider-item-inner-3">
+              <div class="recent-item-image">
+                <img src="img/photo-rec2.jpg" width="370" height="220">
+                <div class="fill"></div>
+                <div class="date">
+                  <div class="day">30</div>
+                  <div class="month">Sep.</div>
+                </div>
+              </div>
+              <h3>Lorem ipsum dolor sit amet</h3>
+              <p>Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium. <span class="dots">...</span><br><span class="more">Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium.</span></p>
+              <button class="read-more-arrow">Read More</button>
+              <div class="read-more-arrow-after"></div>
+            </div>
           </div>
         </div>
         <div class="arrows">
@@ -366,7 +415,7 @@
       </div>
     </section>
 
-    <section class="logos">
+    <section class="logos"><a name="logos"></a>
       <dir class="container">
         <img src="img/the-barber-logo.png" width="210" height="127">
         <img src="img/delicious-logo.png" width="210" height="210">
@@ -380,8 +429,9 @@
         <div class="container">
           <div class="readmore">
             <img src="img/Waxom.png">
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci suscipit lobortis claritatem.</p>
-            <a href="#" class="read-more-arrow">Read More</a>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci suscipit lobortis claritatem. <span class="dots">...</span><br><span class="more">Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium.</span></p>
+            <button class="read-more-arrow">Read More</button>
+            <div class="read-more-arrow-after"></div>
           </div>
           <div class="recentposts">
             <h3>Recent Posts</h3>
@@ -449,8 +499,17 @@
         </div>
       </div>
     </footer>
+    <!--Подключение Jquery-->
     <script src="jquery/jquery-3.4.1.min.js"></script>
+    <!--Подключение анимации цифр-->
+    <script src="js/jquery.spincrement.min.js"></script>
+    <!--Подключение Slick-слайдера-->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!--Подключение анимации при скроллинге AOS-->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!--Подключение анимации Wow.js-->
+    <script src="js/wow.min.js"></script>
     <script src="js/main.js" ></script>
   </body>
 </html>

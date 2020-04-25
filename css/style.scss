@@ -39,6 +39,9 @@ body {
   background-color: #998675;
   border-radius: 3px;
   box-shadow: inset 0 -3px 0 0 #736357;
+  &:focus {
+	  outline: 0;
+	}
   &:hover {
 	  color: $darkest-grey-clr;
 	  transition: $color-transition;
@@ -103,6 +106,7 @@ header {
 		  height: 56px;
 		  z-index: 5;
 		  margin-right: 10%;
+		  cursor: pointer;
 		}
 	  nav {
 		  ul {
@@ -147,7 +151,7 @@ header {
 				}
 			}
 		}
-		.icon-cart {
+	  .icon-cart {
 		  display: block;
 		  width: 18px;
 		  height: 24px;
@@ -167,7 +171,7 @@ header {
 			  transition: background 0.1s linear;
 			}
 		}
-		//Делаем бургер-меню
+		//Бургер-меню
 		.burger-menu {
 			display: none;
 			width: 30px;
@@ -325,6 +329,7 @@ header {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		padding: 0;
 		li {
 			list-style: none;
 			margin: 0 5px;
@@ -500,7 +505,7 @@ header {
   width: 100%;
   height: auto;
   background-color: $white-clr;
-  padding: 10px 20px 80px;
+  padding: 80px 20px 80px;
   .container {
   	  width: 100%;
   	  height: auto;
@@ -750,6 +755,9 @@ header {
 			  text-align: left;
 			  padding: 0 0 30px;
 			  position: relative;
+			  &.projects-item-hidden {
+			  	display: none;
+			  }
 			  &:hover {
 				  background-color: $dark-brown-clr;
 				  transition: $bg-transition;
@@ -799,10 +807,12 @@ header {
 				  left: 0;
 				  width: 370px;
 				  height: 237px;
+				  overflow: hidden;
 				  img {
 					  position: absolute;
 					  top: 0;
 					  left: 0;
+					  transition: 1s;
 					}
 				  .fill {
 					  display: block;
@@ -836,6 +846,9 @@ header {
 					}
 				  
 				}
+			  &:hover img {
+			  	  transform: scale(1.2);
+				}
 			  &:hover .fill {
 				  opacity: 0.3;
 				  transition: opacity 0.1s linear; 
@@ -865,6 +878,11 @@ header {
   width: 100%;
   height: 705px;
   background: url("../img/photo-video.jpg") no-repeat center top;
+  #vid {
+  	  width: 100%;
+  	  height: 100%;
+  	  z-index: 2;
+  }
   .container {
 	  height: 100%;
 	  display: flex;
@@ -886,6 +904,7 @@ header {
 	  	  position: absolute;
 		  top: 225px;
 		  z-index: 1;
+		  cursor: pointer;
 		}
 	  h2 {
 		  font-family: $main-font;
@@ -932,7 +951,6 @@ header {
 		  bottom: 0;
 		}
 	  div {
-	  	border: 1px solid red;
 	  	padding: 190px 0 0 20px;
 		  h2 {
 			  font-family: $main-font;
@@ -974,7 +992,7 @@ header {
   width: 100%;
   height: auto;
   background: linear-gradient(left, #211b19, #4e3427);
-  padding: 30px 0 70px 0;
+  padding: 30px 0 60px;
   .container {
 	  width: 100%;
 	  height: auto;
@@ -1027,7 +1045,7 @@ header {
 	  flex-direction: column;
 	  align-items: center;
 	  text-align: center;
-	  padding: 80px 30px;
+	  padding: 85px 30px;
 	  h2 {
 		  font-family: $main-font;
 		  font-size: 30px;
@@ -1043,150 +1061,161 @@ header {
 		  margin: 0 auto;
 		  padding: 15px 0 0;
 		}
-	  .recent-buttons-items {
-		  display: flex;
-		  flex-wrap: wrap;
-		  width: 100%;
-		  height: auto;
-		  justify-content: center;
-		  .recent-item {
-			  width: 370px;
-			  height: auto;
-			  border: solid 1px #f8f8f8;
-			  margin-top: 30px;
-			  margin-right: 30px;
-			  text-align: left;
-			  position: relative;
-			  padding-bottom: 30px;
-			  &:hover {
-				  background-color: $dark-brown-clr;
-				  border-color: $dark-brown-clr;
-				  transition: $bg-transition, border-$color-transition;
+	  .slider-3 {
+			display: flex;
+			flex-wrap: wrap;
+			width: 100%;
+			height: auto;
+			justify-content: center;
+			position: relative;
+			padding: 15px 0;
+		  .slider-item-3 {
+		  		&:focus {
+					outline: 0;
 				}
-			  &:last-child {
-				  margin-right: 0;
-				}
-			  h3 {
-				  font-family: $main-font;
-				  font-size: 20px;
-				  padding: 30px 30px 10px;
-				  font-weight: 500;
-				  color: $darkest-grey-clr;
-				}
-			  &:hover h3 {
-				  color: $hover-clr;
-				  transition: $color-transition;
-				}
-			  p {
-				  font-family: $second-font;
-				  font-size: 14px;
-				  line-height: 22px;
-				  color: $dark-grey-clr;
-				  padding: 0 30px 25px;
-				}
-			  &:hover p {
-				  color: $white-clr;
-				  transition: $color-transition;
-				}
-			  .read-more-arrow {
-				  font-family: $second-font;
-				  font-size: 14px;
-				  line-height: 20px;
-				  color: $hover-clr;
-				  padding: 0 30px;
-				}
-			  .recent-item-image {
-				  position: relative;
-				  top: 0;
-				  left: 0;
+		  	  .slider-item-inner-3 {
 				  width: 370px;
-				  height: 220px;
-				  img {
-					  width: 100%;
-					  height: 100%;
-					  position: absolute;
+				  height: auto;
+				  border: solid 1px #f8f8f8;
+				  margin: 0 auto;
+				  text-align: left;
+				  position: relative;
+				  padding-bottom: 30px;
+				  &:hover {
+					  background-color: $dark-brown-clr;
+					  border-color: $dark-brown-clr;
+					  transition: $bg-transition, border-$color-transition;
+					}
+				  h3 {
+					  font-family: $main-font;
+					  font-size: 20px;
+					  padding: 30px 30px 10px;
+					  font-weight: 500;
+					  color: $darkest-grey-clr;
+					}
+				  &:hover h3 {
+					  color: $hover-clr;
+					  transition: $color-transition;
+					}
+				  p {
+					  font-family: $second-font;
+					  font-size: 14px;
+					  line-height: 22px;
+					  color: $dark-grey-clr;
+					  padding: 0 30px 25px;
+					  .dots {
+					  }
+					  .more {
+					  	display: none;
+					  }
+					}
+				  &:hover p {
+					  color: $white-clr;
+					  transition: $color-transition;
+					}
+				  .read-more-arrow {
+				  	  background: none;
+				  	  border: none;
+				  	  padding: 0 5px 0 30px;
+				  	  cursor: pointer;
+					  font-family: $second-font;
+					  font-size: 14px;
+					  line-height: 20px;
+					  color: $hover-clr;
+					  &:focus {
+							outline: 0;
+						}
+					}
+				  .recent-item-image {
+					  position: relative;
 					  top: 0;
 					  left: 0;
-					}
-				  .fill {
-					  display: block;
-					  width: 100%;
-					  height: 100%;
-					  background: $fill-clr;
-					  position: absolute;
-					  top: 0;
-					  left: 0;
-					  opacity: 0;
-					}
-				  .date {
-					  width: 50px;
-					  height: 60px;
-					  display: flex;
-					  flex-direction: column;
-					  border-radius: 3px;
-					  overflow: hidden;
-					  text-align: center;
-					  z-index: 1;
-					  position: absolute;
-					  top: 20px;
-					  left: 20px;
-					  .day {
+					  width: 370px;
+					  height: 220px;
+					  img {
 						  width: 100%;
-						  height: 35px;
-						  background-color: #363636;
-						  color: $white-clr;
-						  font-family: $second-font;
-						  font-size: 24px;
-						  line-height: 35px;
+						  height: 100%;
+						  position: absolute;
+						  top: 0;
+						  left: 0;
 						}
-					  .month {
+					  .fill {
+						  display: block;
 						  width: 100%;
-						  height: 25px;
-						  background-color: #252525;
-						  color: $white-clr;
-						  font-family: $second-font;
-						  font-size: 14px;
-						  line-height: 25px;
+						  height: 100%;
+						  background: $fill-clr;
+						  position: absolute;
+						  top: 0;
+						  left: 0;
+						  opacity: 0;
 						}
-					}
-				  .pagination {
-					  .pagination-list {
-						  margin-top: 185px;
-						  li {
-							  margin: 0 3px;
-							  padding: 2px;
+					  .date {
+						  width: 50px;
+						  height: 60px;
+						  display: flex;
+						  flex-direction: column;
+						  border-radius: 3px;
+						  overflow: hidden;
+						  text-align: center;
+						  z-index: 1;
+						  position: absolute;
+						  top: 20px;
+						  left: 20px;
+						  .day {
+							  width: 100%;
+							  height: 35px;
+							  background-color: #363636;
+							  color: $white-clr;
+							  font-family: $second-font;
+							  font-size: 24px;
+							  line-height: 35px;
+							}
+						  .month {
+							  width: 100%;
+							  height: 25px;
+							  background-color: #252525;
+							  color: $white-clr;
+							  font-family: $second-font;
+							  font-size: 14px;
+							  line-height: 25px;
+							}
+						}
+					  .pagination {
+						  .pagination-list {
+							  margin-top: 185px;
+							  li {
+								  margin: 0 3px;
+								  padding: 2px;
+								}
 							}
 						}
 					}
-				}
-			  &:hover {
-			  	  .fill {
-					  opacity: 0.7;
-					  transition: opacity 0.1s linear;
-					}
-				  .recent-item-image {
-				  	  .day {
-						  background-color: $hover-clr;
-						  transition: $bg-transition;
+				  &:hover {
+				  	  .fill {
+						  opacity: 0.7;
+						  transition: opacity 0.1s linear;
 						}
-					  .month {
-						  background-color: #a48d72;
-						  transition: $bg-transition;
+					  .recent-item-image {
+					  	  .day {
+							  background-color: $hover-clr;
+							  transition: $bg-transition;
+							}
+						  .month {
+							  background-color: #a48d72;
+							  transition: $bg-transition;
+							}
 						}
 					}
+				  .read-more-arrow-after {
+					  display: inline-block;
+					  width: 0;
+					  height: 0;
+					  border-top: 5px solid transparent;
+					  border-left: 5px solid $hover-clr;
+					  border-bottom: 5px solid transparent;
+					  line-height: 20px;
+					}
 				}
-			  .read-more-arrow::after {
-				  content: "";
-				  display: inline-block;
-				  width: 0;
-				  height: 0;
-				  border-top: 5px solid transparent;
-				  border-left: 5px solid $hover-clr;
-				  border-bottom: 5px solid transparent;
-				  line-height: 20px;
-				  margin-left: 10px;
-				}
-
 			}
 		}
 	  .arrows {
@@ -1201,6 +1230,7 @@ header {
 			  border-radius: 50%;
 			  border: solid 2px $lightest-grey-clr;
 			  position: relative;
+			  cursor: pointer;
 			}
 		  .left::after,
 		  .right::after {
@@ -1216,7 +1246,7 @@ header {
 			  transform: rotate(-45deg);
 			}
 		  .right::after {
-			  left: 4px;
+			  left: 3px;
 			  transform: rotate(135deg);
 			}
 		  .left:hover,
@@ -1226,6 +1256,69 @@ header {
 			  border-color: $hover-clr;
 			  transition: border-$color-transition;
 			}
+		}
+	}
+}
+
+// Малый слайдер на экране Recent Posts
+
+
+//Конкретный слайдер
+.slider-2 {
+	position: relative;
+	width: 370px;
+	height: 220px;
+	display: flex;
+	overflow: hidden;
+	//Пагинация
+	.slick-dots{
+		width: 100%;
+		position: absolute;
+		bottom: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0;
+		li {
+			list-style: none;
+			margin: 0 5px;
+			button {
+				font-size: 0;
+				width: 10px;
+				height: 10px;
+				background-color: rgba(255,255,255,0.5);
+				cursor: pointer;
+				border: transparent;
+				border-radius: 50%;
+				&:focus {
+					outline: 0;
+				}
+			}
+			&.slick-active {
+				button {
+				  width: 15px;
+				  height: 15px;
+				  background-color: transparent;
+				  border: solid 2px rgba(255,255,255,.5);
+				}
+			}
+		}
+	}
+}
+//Слайд
+.slider-item-2 {
+  .slider-item-inner-2 {
+  	  width: 370px;
+	  height: 220px;
+	  min-width: 0;
+	  margin: 0 auto;
+	  padding: 300px 90px 0;
+	  img {
+		  width: 100%;
+		  height: auto;
+		  position: absolute;
+		  top: 0;
+		  left: 0;
 		}
 	}
 }
@@ -1245,7 +1338,7 @@ header {
 	  flex-wrap: wrap;
 	  padding: 120px 0;
 	  img {
-	  	margin: 20px 45px;
+	  	  margin: 20px 45px;
 	  }
 	}
 }
@@ -1293,32 +1386,36 @@ header {
 	  	  p {
 			  line-height: 24px;
 			  padding-bottom: 30px;
+			  .dots {
+			  }
+			  .more {
+			  	display: none;
+			  }
 			}
 		  .read-more-arrow {
+		  	  background: none;
+		  	  border: none;
+		  	  padding: 0;
+		  	  cursor: pointer;
 			  font-family: $second-font;
 			  font-size: 14px;
 			  font-weight: 600;
-			  color: $lightest-grey-clr;
+			  color: $hover-clr;
+			  margin-right: 5px;
+			  &:focus {
+					outline: 0;
+				}
 			}
-		  .read-more-arrow:hover {
-		  	  color: $hover-clr;
-		  	  transition: $color-transition;
-		    }
-		  .read-more-arrow::after {
-			  content: "";
+		  .read-more-arrow-after {
 			  display: inline-block;
 			  width: 0;
 			  height: 0;
 			  border-top: 5px solid transparent;
-			  border-left: 5px solid $lightest-grey-clr;
+			  border-left: 5px solid $hover-clr;
 			  border-bottom: 5px solid transparent;
 			  line-height: 20px;
-			  margin-left: 10px;
+			  margin-left: 0;
 			}
-		  .read-more-arrow:hover::after {
-		  	  border-left: 5px solid $hover-clr;
-		  	  transition: border-left 0.1s linear;
-		    }
 	    }
 	  .recentposts {
 	  	  div {
@@ -1391,7 +1488,7 @@ header {
   font-weight: 500;
   line-height: 20px;
   color: $darkest-grey-clr;
-  padding: 25px 0;
+  padding: 30px 0 45px;
   .container {
 	  height: auto;
 	  display: flex;
@@ -1403,7 +1500,7 @@ header {
 		  display: flex;
 		  list-style: none;
 		  flex-wrap: wrap;
-		  margin-top: 20px;
+		  margin-top: 15px;
 		}
 	  .copyright-first li {
 		  padding: 0 12px;
@@ -1444,16 +1541,6 @@ header {
 	.projects {
 		height: auto;
 	}
-	/*.counters {
-		.container {
-			div {
-				width: 50%;
-			}
-			div:last-child {
-				flex-grow: 1;
-			}
-		}
-	}*/
 }
 
 @media (max-width: 1050px) {
@@ -1483,6 +1570,7 @@ header {
 				
 			}
 		}
+	}
 	.advantages {
 		ul {
 			flex-wrap: wrap;
@@ -1507,9 +1595,9 @@ header {
 				display: none;
 			}
 			div {
+				padding-top: 80px;
 				h2 {
 					margin-left: 0;
-					padding-top: 80px;
 				}
 				p {
 					margin-left: 0;
@@ -1561,8 +1649,8 @@ header {
 	.recent {
 		.container {
 			.arrows {
-			  width: 93px;
-			  height: 62px;
+			  width: 113px;
+			  height: 42px;
 			  div {
 				  width: 42px;
 				  height: 42px;
@@ -1607,7 +1695,7 @@ header {
 		}
 		.slider-item {
 			.slider-item-inner {
-				padding-top: 220px;
+				padding-top: 200px;
 				h2 {
 					font-size: 28px;
 				}
@@ -1641,12 +1729,4 @@ header {
 			}
 		}
 	}
-	/*.counters {
-		.container {
-			div {
-				width: 100%;
-			}
-		}
-	}*/
-}
 }
